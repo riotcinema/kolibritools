@@ -1,0 +1,40 @@
+<!--
+/**
+ * cosmonautexperience.com
+ *
+ * Website for The Cosmonaut movie.
+ *
+ * NOTE OF LICENSE
+ * Licensed under GNU General Public License version 3.0
+ *
+ * Copyright (c) 2013 Tecnilógica Soluciones Avanzadas.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the GNU Public License v3.0
+ * which accompanies this distribution, and is available at
+ * http://www.gnu.org/licenses/gpl.html
+ *
+ * Contributors:
+ * Tecnilógica Soluciones Avanzadas - initial API and implementation
+ *
+ * @package   cosmonautexperience
+ * @author    Tecnilógica soluciones avanzadas
+ * @copyright Copyright (c) 2003 - 2013, Tecnilógica soluciones avanzadas, S.A. (http://tecnilogica.com/)
+ * @license   http://www.gnu.org/licenses/gpl-3.0.html
+ * @link      http://cosmonautexperience.com
+ *
+ *
+ *
+ * pagination_template.html
+ *
+ * Partial template to display pagination controls.
+-->
+
+<check if="{{isset(@paginationArray) && count(@paginationArray)}}">
+<div class="pagination">
+  <ul>
+    <repeat group="{{@paginationArray}}" value="{{@page}}">
+    <li {{@page.class_backend}}><a href="{{@paginationURL}}{{@page.page}}">{{@page.display_backend}}</a></li>
+    </repeat>
+  </ul>
+</div>
+</check>

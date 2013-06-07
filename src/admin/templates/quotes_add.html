@@ -1,0 +1,90 @@
+<!--
+/**
+ * cosmonautexperience.com
+ *
+ * Website for The Cosmonaut movie.
+ *
+ * NOTE OF LICENSE
+ * Licensed under GNU General Public License version 3.0
+ *
+ * Copyright (c) 2013 Tecnilógica Soluciones Avanzadas.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the GNU Public License v3.0
+ * which accompanies this distribution, and is available at
+ * http://www.gnu.org/licenses/gpl.html
+ *
+ * Contributors:
+ * Tecnilógica Soluciones Avanzadas - initial API and implementation
+ *
+ * @package   cosmonautexperience
+ * @author    Tecnilógica soluciones avanzadas
+ * @copyright Copyright (c) 2003 - 2013, Tecnilógica soluciones avanzadas, S.A. (http://tecnilogica.com/)
+ * @license   http://www.gnu.org/licenses/gpl-3.0.html
+ * @link      http://cosmonautexperience.com
+ *
+ *
+ *
+ * quotes_add.html
+ *
+ * Template to add / edit media quotes.
+-->
+
+<ul class="breadcrumb">
+  <li><a href="{{@BASE_URL}}/admin/">Home</a> <span class="divider">&gt;</span></li>
+  <li><a href="{{@BASE_URL}}/admin/quotes/list">Citas</a> <span class="divider">&gt;</span></li>
+  <li class="active">Añadir / Editar</li>
+</ul>
+
+<include href="error_template.html"/>
+
+<form method="post" action="{{@BASE_URL}}/admin/quotes/update" id="f_edit" enctype="multipart/form-data" class="form-horizontal">
+
+  <input type="hidden" value="{{isset(@POST.quo_id) ? @POST.quo_id : NULL}}" name="quo_id"/>
+
+  <fieldset>
+
+    <div class="control-group">
+      <label for="quo_es" class="control-label">Español</label>
+      <div class="controls">
+        <textarea type="textarea" name="quo_es" class="input-xlarge" id="quo_es"/>{{isset(@POST.quo_es) ? @POST.quo_es : NULL}}</textarea>
+      </div>
+    </div>
+
+    <div class="control-group">
+      <label for="quo_author_es" class="control-label">Autor (ES)</label>
+      <div class="controls">
+        <input type="text" value="{{isset(@POST.quo_author_es) ? @POST.quo_author_es : NULL}}" name="quo_author_es" class="input-xlarge"/>
+      </div>
+    </div>
+
+    <div class="control-group">
+      <label for="quo_en" class="control-label">Inglés</label>
+      <div class="controls">
+        <textarea type="textarea" name="quo_en" class="input-xlarge" id="quo_en"/>{{isset(@POST.quo_en) ? @POST.quo_en : NULL}}</textarea>
+      </div>
+    </div>
+
+    <div class="control-group">
+      <label for="quo_author_en" class="control-label">Autor (EN)</label>
+      <div class="controls">
+        <input type="text" value="{{isset(@POST.quo_author_en) ? @POST.quo_author_en : NULL}}" name="quo_author_en" class="input-xlarge"/>
+      </div>
+    </div>
+
+  </fieldset>
+
+  <div class="form-actions">
+    <a class="btn" href="{{@BASE_URL}}/admin/quotes/list">Cancelar</a>
+    <button class="btn btn-primary" type="submit" id="submit">Modificar</button>
+  </div>
+
+</form>
+
+<script type="text/javascript">
+  $(document).ready(function() {
+    $.each($("textarea"), function(index, item) {
+      $(item).css("width", "500px");
+      $(item).attr("rows", "5");
+    });
+  });
+</script>

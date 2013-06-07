@@ -1,0 +1,92 @@
+<!--
+/**
+ * cosmonautexperience.com
+ *
+ * Website for The Cosmonaut movie.
+ *
+ * NOTE OF LICENSE
+ * Licensed under GNU General Public License version 3.0
+ *
+ * Copyright (c) 2013 Tecnilógica Soluciones Avanzadas.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the GNU Public License v3.0
+ * which accompanies this distribution, and is available at
+ * http://www.gnu.org/licenses/gpl.html
+ *
+ * Contributors:
+ * Tecnilógica Soluciones Avanzadas - initial API and implementation
+ *
+ * @package   cosmonautexperience
+ * @author    Tecnilógica soluciones avanzadas
+ * @copyright Copyright (c) 2003 - 2013, Tecnilógica soluciones avanzadas, S.A. (http://tecnilogica.com/)
+ * @license   http://www.gnu.org/licenses/gpl-3.0.html
+ * @link      http://cosmonautexperience.com
+ *
+ *
+ *
+ * nayik_template.html
+ *
+-->
+
+<section id="nayik">
+	<section class="background">
+		<div class="subwrapper">
+			<h2>{{@dict_nay_story_alive}}</h2>
+
+			<repeat group="{{@plot}}" value="{{@post}}">
+
+				<div class="entrada">
+
+					<div class="usr_left">
+						<div class="usr">
+							<img src="{{@_PATH}}/images/nayik/{{@characters[@post['nay_fk_cha_id']]['cha_avatar']}}" alt="@characters[@post['nay_fk_cha_id']]['cha_name']}}" />
+							<div class="circulo_pos"></div>
+						</div>
+					</div>
+
+					<div class="entrada_right">
+						<p class="estatico">{{@characters[@post['nay_fk_cha_id']]['cha_name']}} {{@dict_nay_says}}:</p>
+						<p class="tlt_entrada">{{@post['nay_comment']}}</p>
+						<check if="{{strtolower(@LANGUAGE)=='es'}}">
+							<true><p class="estatico fecha">{{@dict_nay_ago_1}} {{@post['nay_diff']}} {{@dict_nay_ago_2}}</p></true>
+							<false><p class="estatico fecha">{{@post['nay_diff']}} {{@dict_nay_ago_3}}</p></false>
+						</check>
+
+						<div class="cnt_comentarios">
+
+							<check if="{{array_key_exists('responses',@post)}}" >
+								<true>
+									<repeat group="{{@post['responses']}}" value="{{@response}}">
+
+										<div class="comentario">
+											<div class="usr_coment">
+												<img src="{{@_PATH}}/images/nayik/{{@characters[@response['nay_fk_cha_id']]['cha_avatar']}}" alt="@characters[@response['nay_fk_cha_id']]['cha_name']}}" />
+											</div>
+											<div class="txt_comentario">
+												<p class="estatico">{{@characters[@response['nay_fk_cha_id']]['cha_name']}} {{@dict_nay_says}}:</p>
+												<p class="p_comentario">{{@response['nay_comment']}}</p>
+												<p class="estatico fecha">
+													<check if="{{strtolower(@LANGUAGE)=='es'}}">
+														<true><p class="estatico fecha">{{@dict_nay_ago_1}} {{@response['nay_diff']}} {{@dict_nay_ago_2}}</p></true>
+														<false><p class="estatico fecha">{{@response['nay_diff']}} {{@dict_nay_ago_3}}</p></false>
+													</check>
+												</p>
+											</div>
+										</div>
+
+									</repeat>
+								</true>
+							</check>
+
+						</div>
+
+					</div>
+
+				</div>
+
+			</repeat>
+
+		</div>
+
+	</section>
+</section>

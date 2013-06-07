@@ -1,0 +1,75 @@
+.rounded-corners (@radius) {
+  border-radius: @radius;
+  -moz-border-radius: @radius;
+  -webkit-border-radius: @radius;
+}
+
+.shadowed-box (@shadow) {
+  box-shadow: @shadow;
+  -moz-box-shadow: @shadow;
+  -webkit-box-shadow: @shadow;
+}
+
+.shadowed-text (@shadow) {
+  text-shadow: 0 1px 1px @shadow;
+  filter: dropshadow(color=@shadow, offx=1, offy=1);
+}
+.shadowed-text-plus (@shadow) {
+  text-shadow: 1px -1px 18px @shadow;
+  filter: dropshadow(color=@shadow, offx=1, offy=1);
+}
+
+.gradient-vertical (@color1: #FFF, @color2: #000) {
+  background: @color2;
+  background: -moz-linear-gradient(top,  @color2 0%, @color1 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,@color2), color-stop(100%,@color1));
+  background: -webkit-linear-gradient(top,  @color2 0%,@color1 100%);
+  background: -o-linear-gradient(top,  @color2 0%,@color1 100%);
+  background: -ms-linear-gradient(top,  @color2 0%,@color1 100%);
+  background: linear-gradient(top,  @color2 0%,@color1 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='@color2', endColorstr='@color1',GradientType=0 );
+
+}
+.gradient-vertical-img (@color1: #FFF, @color2: #000, @img: none) {
+  background-image: @img;
+  background-image: -moz-linear-gradient(top,  @color2 0%, @color1 100%), @img;
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%,@color2), color-stop(100%,@color1)), @img;
+  background-image: -webkit-linear-gradient(top,  @color2 0%,@color1 100%), @img;
+  background-image: -o-linear-gradient(top,  @color2 0%,@color1 100%), @img;
+  background-image: -ms-linear-gradient(top,  @color2 0%,@color1 100%), @img;
+  background-image: linear-gradient(top,  @color2 0%,@color1 100%), @img;
+
+}
+.gradient-horizontal (@color1: #FFF, @color2: #000) {
+  background: @color2;
+  background: -moz-linear-gradient(left,  @color2 0%, @color1 100%);
+  background: -webkit-gradient(linear, left top, right top, color-stop(0%,@color2), color-stop(100%,@color1));
+  background: -webkit-linear-gradient(left,  @color2 0%,@color1 100%);
+  background: -o-linear-gradient(left,  @color2 0%,@color1 100%);
+  background: -ms-linear-gradient(left,  @color2 0%,@color1 100%);
+  background: linear-gradient(left,  @color2 0%,@color1 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='@color2', endColorstr='@color1',GradientType=1 );
+}
+
+.background-color (@colorR, @colorH, @opacity){
+  background-color:@colorH;
+  background-color:@colorR;
+  filter:alpha(opacity=@opacity);
+}
+.transparent (@transparent) {
+       opacity: @transparent / 100;
+  -moz-opacity: @transparent / 100;
+        filter: progid:DXImageTransform.Microsoft.Alpha(opacity=@transparent);
+}
+.rotate(@rotate, @origin:50% 50%){
+          -o-transform: @rotate;
+         -ms-transform: @rotate;
+        -moz-transform: @rotate; 
+     -webkit-transform: @rotate;
+             transform: @rotate;
+   -o-transform-origin: @origin;
+    -ms-transform-origin: @origin;
+   -moz-transform-origin: @origin;
+-webkit-transform-origin: @origin;
+        transform-origin: @origin;
+}

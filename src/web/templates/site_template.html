@@ -1,0 +1,92 @@
+<!--
+/**
+ * cosmonautexperience.com
+ *
+ * Website for The Cosmonaut movie.
+ *
+ * NOTE OF LICENSE
+ * Licensed under GNU General Public License version 3.0
+ *
+ * Copyright (c) 2013 Tecnilógica Soluciones Avanzadas.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the GNU Public License v3.0
+ * which accompanies this distribution, and is available at
+ * http://www.gnu.org/licenses/gpl.html
+ *
+ * Contributors:
+ * Tecnilógica Soluciones Avanzadas - initial API and implementation
+ *
+ * @package   cosmonautexperience
+ * @author    Tecnilógica soluciones avanzadas
+ * @copyright Copyright (c) 2003 - 2013, Tecnilógica soluciones avanzadas, S.A. (http://tecnilogica.com/)
+ * @license   http://www.gnu.org/licenses/gpl-3.0.html
+ * @link      http://cosmonautexperience.com
+ *
+ *
+ *
+ * site_template.html
+ *
+-->
+
+<!doctype html>
+  <!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+  <!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8" lang="en"><![endif]-->
+  <!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="en"><![endif]-->
+  <!--[if gt IE 8]><!--> <html class="no-js" lang="es"><!--<![endif]-->
+  <head>
+		<meta charset="charset=UTF-8" />
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<meta name="description" content="">
+		<meta name="author" content="">
+		<!--
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0" />
+		-->
+		<title>{{@dict_com_title}}</title>
+		<link rel="shortcut icon" type="image/ico" href="{{@BASE_URL}}/favicon.ico" />
+
+    <check if="{{isset(@external_css)}}">
+      <true><repeat group="{{@external_css}}" value="{{@css}}"><link media="screen" rel="stylesheet" href="{{@css}}" /></repeat></true>
+    </check>
+
+    <link rel="stylesheet" type="text/css" href="{{@_PATH}}/css/style.css" />
+    <check if="{{isset(@extra_css)}}">
+		  <true><repeat group="{{@extra_css}}" value="{{@css}}"><link rel="stylesheet" type="text/css" href="{{@_PATH}}/css/{{@css}}" /></repeat></true>
+	  </check>
+		<!--[if (lt IE 9) & (!IEMobile)]>
+		<script src="{{@_PATH}}/js/lib/selectivizr-min.js"></script>
+		<![endif]-->
+	
+		<script>
+		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+		<check if="{{strtolower(@LANGUAGE)=='es'}}">
+		<true>ga('create', 'UA-41104887-1', 'cosmonautexperience.com');</true>
+		<false>ga('create', 'UA-41104887-2', 'cosmonautexperience.com');</false>
+		</check>
+	  	ga('send', 'pageview');
+		</script>
+  </head>
+
+	<body class="clearfix <check if="{{isset(@body_class)}}"><true>{{@body_class}}</true></check>" <check if="{{isset(@body_id)}}"><true>id="{{@body_id}}"</true></check>>
+
+		<check if="{{isset(@facebook_required)}}"><true><div id="fb-root" class="fb_reset"></div></true></check>
+
+		<include if="{{ isset(@tem_login) }}" href="{{ @tem_login }}" />
+
+		<include if="{{ isset(@tem_header) }}" href="{{ @tem_header }}" />
+		<include if="{{ isset(@tem_content) }}" href="{{ @tem_content }}" />
+		<include if="{{ isset(@tem_blog) }}" href="{{ @tem_blog }}" />
+		<include if="{{ isset(@tem_footer) }}" href="{{ @tem_footer }}" />
+
+		<check if="{{isset(@external_js)}}">
+			<true><repeat group="{{@external_js}}" value="{{@js}}"><script type="text/javascript" src="{{@js}}"></script></repeat></true>
+		</check>
+
+		<check if="{{isset(@extra_js) && is_array(@extra_js)}}">
+			<true><repeat group="{{@extra_js}}" value="{{@js}}"><script type="text/javascript"><include href="'../js/'.{{@js}}" /></script></repeat></true>
+		</check>
+
+	</body>
+
+  <include if="{{isset(@tem_infowindow) }}" href="{{@tem_infowindow}}" />
+
+</html>

@@ -108,7 +108,6 @@ URL_DOWN_PRESS        = "full-presskit.zip"
 URL_DOWN_REM_DIRECT   = ""
 URL_DOWN_REM_MATERIAL = ""
 URL_DOWN_REM_TORRENT  = "TheCosmonaut.torrent"
-URL_DOWN_REM_WEB      = ""
 URL_DOWN_SOUNDTRACK   = ""
 URL_DOWN_TRANS_SESS   = ""
 URL_THE_PLAN_EN       = "theplan3_eng.pdf"
@@ -146,10 +145,6 @@ VALUE_DVD = 20 # Price for DVD copy
 ; TWITTER CACOUNT CONSTANTS
 TWITTER_ACCOUNT_EN       = "cosmonaut_movie" # Twitter account for the project, English language
 TWITTER_ACCOUNT_ES       = "el_cosmonauta" # Twitter account for the project, Spanish language
-TWITTER_VIDEO_HASHTAG_EN = "ElCosmonauta"  # Twitter hashtag, Spanish language
-TWITTER_VIDEO_HASHTAG_ES = "TheCosmonaut" # Twitter hashtag, English language
-TWITTER_VIDEO_TEXT_EN    = "I'm watching " # Tweet text, English language
-TWITTER_VIDEO_TEXT_ES    = "Estoy viendo" # Tweet text, Spanish language
 
 
 ; GOOGLE API KEYS

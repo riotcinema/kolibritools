@@ -1,0 +1,73 @@
+<!--
+/**
+ * cosmonautexperience.com
+ *
+ * Website for The Cosmonaut movie.
+ *
+ * NOTE OF LICENSE
+ * Licensed under GNU General Public License version 3.0
+ *
+ * Copyright (c) 2013 Tecnilógica Soluciones Avanzadas.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the GNU Public License v3.0
+ * which accompanies this distribution, and is available at
+ * http://www.gnu.org/licenses/gpl.html
+ *
+ * Contributors:
+ * Tecnilógica Soluciones Avanzadas - initial API and implementation
+ *
+ * @package   cosmonautexperience
+ * @author    Tecnilógica soluciones avanzadas
+ * @copyright Copyright (c) 2003 - 2013, Tecnilógica soluciones avanzadas, S.A. (http://tecnilogica.com/)
+ * @license   http://www.gnu.org/licenses/gpl-3.0.html
+ * @link      http://cosmonautexperience.com
+ *
+ *
+ *
+ * site_header.html
+ *
+-->
+
+<section id="sectionHeader">
+
+	<header id="common-header" class="">
+		<div class="subwrapper">
+		  <h1><a href="/">{{@dict_com_thecosmonaut}}</a></h1>
+			<nav>
+        <check if="{{strtolower(@LANGUAGE)=='es'}}">
+          <true><a id="lang_link" class="button blue" href="{{@BASE_URL_EN}}" title="{{@dict_com_foo_go_to_the_web_in}}">{{@dict_com_foo_go_to_the_web_in}}</a></true>
+          <false><a id="lang_link" class="button blue" href="{{@BASE_URL_ES}}" title="{{@dict_com_foo_go_to_the_web_in}}">{{@dict_com_foo_go_to_the_web_in}}</a></false>
+        </check>
+				<a href="{{@BASE_URL}}/film_universe" alt="{{@dict_com_film_universe}}" class="{{isset(@universe_selected) ? 'selected' : NULL}}">{{@dict_com_film_universe}}</a>
+				<a href="{{@BASE_URL}}/live_experience" alt="{{@dict_com_live_experience}}" class="{{isset(@experience_selected) ? 'selected' : NULL }}">{{@dict_com_live_experience}}</a>
+				<a href="{{@BASE_URL}}/nayik" alt="{{@dict_com_nayik}}" class="{{isset(@nayik_selected) ? 'selected' : NULL }}">{{@dict_com_nayik}}</a>
+				<a href="{{@lang_url_shop}}" alt="{{@dict_com_shop}}" target="_blank" class="{{isset(@shop_selected) ? 'selected' : NULL }}">{{@dict_com_shop}}</a>
+				<a href="{{@BASE_URL}}/about" alt="{{@dict_com_about}}" class="{{isset(@about_selected) ? 'selected' : NULL }}">{{@dict_com_about}}</a>
+				<check if="{{SessionManager::is_logged()}}">
+				<true>
+				<a href="#" id="dashboard_link" alt="{{@SESSION['firstname']}}" class="{{isset(@k_pass_selected) ? 'selected' : NULL }}">
+					{{ mb_convert_case(html_entity_decode(@SESSION['firstname'], ENT_NOQUOTES, @ENCODING), MB_CASE_UPPER, @ENCODING) }}
+				</a>
+				</true>
+				<false>
+				<a href="{{@BASE_URL}}/k_pass" id="session_link" alt="{{@dict_com_k_pass}}" class="{{isset(@k_pass_selected) ? 'selected' : NULL }}">{{@dict_com_k_pass}}</a>
+				</false>
+				</check>
+
+			</nav>
+			<div class="clear"></div>
+		</div><!-- .#subwrapper -->
+	</header>
+
+	<div class="wrapper" id="session_wrapper">
+		<div class="subwrapper">
+			<div class="login">
+				<ul>
+					<li><a href="{{@BASE_URL}}/dashboard" alt="{{@dict_com_your_account}}">{{@dict_com_your_account}}</a></li>
+					<li><a href="{{@BASE_URL}}/logout" alt="{{@dict_com_close_session}}">{{@dict_com_close_session}}</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+
+</section>

@@ -1,0 +1,106 @@
+<!--
+/**
+ * cosmonautexperience.com
+ *
+ * Website for The Cosmonaut movie.
+ *
+ * NOTE OF LICENSE
+ * Licensed under GNU General Public License version 3.0
+ *
+ * Copyright (c) 2013 Tecnilógica Soluciones Avanzadas.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the GNU Public License v3.0
+ * which accompanies this distribution, and is available at
+ * http://www.gnu.org/licenses/gpl.html
+ *
+ * Contributors:
+ * Tecnilógica Soluciones Avanzadas - initial API and implementation
+ *
+ * @package   cosmonautexperience
+ * @author    Tecnilógica soluciones avanzadas
+ * @copyright Copyright (c) 2003 - 2013, Tecnilógica soluciones avanzadas, S.A. (http://tecnilogica.com/)
+ * @license   http://www.gnu.org/licenses/gpl-3.0.html
+ * @link      http://cosmonautexperience.com
+ *
+ *
+ *
+ * remixes_add.html
+ *
+ * Template to add/edit remix video.
+-->
+
+<ul class="breadcrumb">
+  <li><a href="{{@BASE_URL}}/admin/">Home</a> <span class="divider">&gt;</span></li>
+  <li><a href="{{@BASE_URL}}/admin/remixes/list">Remezclas</a> <span class="divider">&gt;</span></li>
+  <li class="active">Añadir / Editar</li>
+</ul>
+
+<include href="error_template.html"/>
+
+<form method="post" action="{{@BASE_URL}}/admin/remixes/update" id="f_edit" class="form-horizontal">
+
+  <input type="hidden" value="{{isset(@POST.rem_id) ? @POST.rem_id : NULL}}" name="rem_id"/>
+
+  <fieldset>
+
+    <div class="control-group">
+      <label for="rem_title" class="control-label">Título</label>
+      <div class="controls">
+        <input type="text" value="{{isset(@POST.rem_title) ? @POST.rem_title : NULL}}" name="rem_title" class="input-xlarge"/>
+      </div>
+    </div>
+
+    <div class="control-group">
+      <label for="rem_url" class="control-label">URL</label>
+      <div class="controls">
+        <input type="text" value="{{isset(@POST.rem_url) ? @POST.rem_url : NULL}}" name="rem_url" class="input-xlarge"/>
+      </div>
+    </div>
+
+    <div class="control-group">
+      <label for="rem_author" class="control-label">Autor</label>
+      <div class="controls">
+        <input type="text" value="{{isset(@POST.rem_author) ? @POST.rem_author : NULL}}" name="rem_author" class="input-xlarge"/>
+      </div>
+    </div>
+
+    <div class="control-group">
+      <label for="rem_channel_url" class="control-label">URL del Autor</label>
+      <div class="controls">
+        <input type="text" value="{{isset(@POST.rem_channel_url) ? @POST.rem_channel_url : NULL}}" name="rem_channel_url" class="input-xlarge"/>
+      </div>
+    </div>
+
+    <div class="control-group">
+      <label for="rem_highlight" class="control-label">¿Destacado?</label>
+      <div class="controls">
+        <input type="checkbox" {{(isset(@POST.rem_highlight) && @POST.rem_highlight) ? 'checked' : ''}} 
+          name="rem_highlight" 
+          class="input-xlarge" id="input_rem_highlight"/>
+      </div>
+    </div>
+
+  </fieldset>
+
+  <div class="form-actions">
+    <a class="btn" href="{{@BASE_URL}}/admin/remixes/list">Cancelar</a>
+    <button class="btn btn-primary" type="submit" id="submit">Modificar</button>
+  </div>
+
+</form>
+
+<script type="text/javascript">
+
+  $(document).ready(function() {
+    $('#input_rem_highlight').tooltip({"position":"top", "title":"Recuerda que sólo puede haber un remix resaltado a la vez."});
+  });
+
+  $("#input_rem_highlight").click(function() {
+    if ($('#input_rem_highlight').checked) {
+      $('#input_rem_highlight').tooltip('show');
+    } else {
+      $('#input_rem_highlight').tooltip('hide');
+    }
+  });
+
+</script>

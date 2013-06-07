@@ -1,0 +1,120 @@
+<!--
+/**
+ * cosmonautexperience.com
+ *
+ * Website for The Cosmonaut movie.
+ *
+ * NOTE OF LICENSE
+ * Licensed under GNU General Public License version 3.0
+ *
+ * Copyright (c) 2013 Tecnilógica Soluciones Avanzadas.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the GNU Public License v3.0
+ * which accompanies this distribution, and is available at
+ * http://www.gnu.org/licenses/gpl.html
+ *
+ * Contributors:
+ * Tecnilógica Soluciones Avanzadas - initial API and implementation
+ *
+ * @package   cosmonautexperience
+ * @author    Tecnilógica soluciones avanzadas
+ * @copyright Copyright (c) 2003 - 2013, Tecnilógica soluciones avanzadas, S.A. (http://tecnilogica.com/)
+ * @license   http://www.gnu.org/licenses/gpl-3.0.html
+ * @link      http://cosmonautexperience.com
+ *
+ *
+ *
+ * map_template.html
+ *
+-->
+
+<div id="video-the-movie" class="lightbox" style="background:#000000">
+  <a id="link-the-movie-close" href="#" class="cerrar"></a>
+</div>
+
+<div class="content">
+
+  <section id="movie_play">
+  <check if="isset(@released)">
+    <true>
+		  <a href="#" class="btn_play">{{@dict_mov_watch_movie}}</a>
+		  <a href="#" class="btn_volver">{{@dict_mov_go_to_beginning}}</a>
+    </true>
+    <false>
+      <h2><br/><br/>{{@dict_mov_the_cosmonaut}}</h2>
+      <h3>{{@dict_uni_18_may}}</h3>
+    </false>
+  </check>
+  </section>
+
+  <section id="movie_before" style="display:none">
+  	<div class="parr_pay">{{@dict_mov_we_believe}}<br />{{@dict_mov_we_can_only_1}}{{@dict_mov_we_can_only_2}}</div>
+	  <h2>{{@dict_mov_watch_the_movie}}</h2>
+	  <p>{{@dict_mov_if_you_pay_1}} <a href="{{@BASE_URL}}/k_pass" target="_blank" style="color:white;text-decoration:none"><span class="dotted">{{@dict_mov_k_pass}}</span></a></p>
+	  <div class="cnt_dona">
+	    <form action="{{@PAYPAL_URL}}" method="post" class="payPalForm" id="frm_pwyw_before">
+		    <label>{{@dict_mov_average}}</label>
+		    <input name="amount" id="" class="inp_dona" type="text" value="5" />€
+		    <a href="#" class="btn_paypal" id="submit_pwyw_before">{{@dict_mov_pay_with_paypal}}</a>
+				<input type="hidden" name="business" value="{{@PAYPAL_EMAIL}}" />
+				<input type="hidden" name="cbt" value="{{@dict_mov_back_to_website}}" />
+				<input type="hidden" name="cmd" value="_donations" />
+				<input type="hidden" name="currency_code" value="EUR" />
+				<input type="hidden" name="item_name" value="Donation" />
+				<input type="hidden" name="lc" value="{{strtoupper(@LANGUAGE)}}" />
+				<input type="hidden" name="no_note" value="1" />
+				<input type="hidden" name="no_shipping" value="1" />
+				<input type="hidden" name="notify_url" value="{{@BASE_URL}}/ipn" /> 
+				<input type="hidden" name="return" value="{{@BASE_URL}}/ipn" /> 
+				<input type="hidden" name="rm" value="2" />
+		  </form>
+	  </div>
+	  <div class="cnt_dona">
+		  <span class="linea"></span>{{@dict_mov_or}}<span class="linea"></span>
+	  </div>
+	  <h2>{{@dict_mov_share}}</h2>
+	  <div class="cnt_comparte" id="cnt_comparte_before" style="display:none">
+		  <a href="#" class="comparteFace">{{@dict_mov_share_facebook}}</a>
+		  <a href="#" class="comparteTw">{{@dict_mov_share_twitter}}</a>
+		</div>
+		<div class="cnt_dona" id="div_dyn_cnt_comparte_before">
+		</div>
+  </section>
+
+  <section id="movie_after" style="display:none">
+  	<div class="parr_pay">{{@dict_mov_enjoying_1}} <a href="{{@BASE_URL}}/about">{{@dict_mov_enjoying_2}}</a><br/>{{@dict_mov_enjoying_3}} {{@dict_mov_enjoying_4}}</div>
+	  <h2>{{@dict_mov_paying_what_you_want}}</h2>
+	  <p>{{@dict_mov_if_you_pay_1}} <a href="{{@BASE_URL}}/k_pass" target="_blank" style="color:white;text-decoration:none"><span class="dotted">{{@dict_mov_k_pass}}</span></a></p>
+		<div class="cnt_dona">
+		  <form action="{{@PAYPAL_URL}}" method="post" class="payPalForm" id="frm_pwyw_after">
+			<label>{{@dict_mov_average}}</label>
+			<input name="amount" id="" class="inp_dona" type="text" value="5" />€
+			<a href="#" class="btn_paypal" id="submit_pwyw_after">{{@dict_mov_pay_with_paypal}}</a>
+	        <input type="hidden" name="business" value="{{@PAYPAL_EMAIL}}" />
+	        <input type="hidden" name="cbt" value="{{@dict_mov_back_to_website}}" />
+	        <input type="hidden" name="cmd" value="_donations" />
+	        <input type="hidden" name="currency_code" value="EUR" />
+	        <input type="hidden" name="item_name" value="Donation" />
+	        <input type="hidden" name="lc" value="{{strtoupper(@LANGUAGE)}}" />
+	        <input type="hidden" name="no_note" value="1" />
+	        <input type="hidden" name="no_shipping" value="1" />
+	        <input type="hidden" name="notify_url" value="{{@BASE_URL}}/ipn" /> 
+	        <input type="hidden" name="return" value="{{@BASE_URL}}/ipn" /> 
+	        <input type="hidden" name="rm" value="2" />
+      	  </form>
+		</div>
+		<div class="cnt_dona">
+			<span class="linea"></span>{{@dict_mov_or}}<span class="linea"></span>
+		</div>
+		<h2>{{@dict_mov_or_sharing}}</h2>
+		<div class="cnt_comparte"  style="display:none">
+			<a href="" class="comparteFace">{{@dict_mov_share_facebook}}</a>
+			<a href="" class="comparteTw">{{@dict_mov_share_twitter}}</a>
+		</div>
+    <div class="cnt_dona" id="div_dyn_cnt_comparte_after">
+    </div>
+  </section>
+ 
+</div>
+</true>
+</check>

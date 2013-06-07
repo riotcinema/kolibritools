@@ -1,0 +1,98 @@
+<!--
+/**
+ * cosmonautexperience.com
+ *
+ * Website for The Cosmonaut movie.
+ *
+ * NOTE OF LICENSE
+ * Licensed under GNU General Public License version 3.0
+ *
+ * Copyright (c) 2013 Tecnilógica Soluciones Avanzadas.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the GNU Public License v3.0
+ * which accompanies this distribution, and is available at
+ * http://www.gnu.org/licenses/gpl.html
+ *
+ * Contributors:
+ * Tecnilógica Soluciones Avanzadas - initial API and implementation
+ *
+ * @package   cosmonautexperience
+ * @author    Tecnilógica soluciones avanzadas
+ * @copyright Copyright (c) 2003 - 2013, Tecnilógica soluciones avanzadas, S.A. (http://tecnilogica.com/)
+ * @license   http://www.gnu.org/licenses/gpl-3.0.html
+ * @link      http://cosmonautexperience.com
+ *
+ *
+ *
+ * remixes_list.html
+ *
+ * Template to display a paginated list of video remixes.
+-->
+
+<ul class="breadcrumb">
+  <li>
+    <a href="{{@BASE_URL}}/admin/">Home</a> <span class="divider">&gt;</span>
+  </li>
+  <li class="active">Remezclas <span class="badge badge-light">{{count(@remixes)}}</span></li>
+  <li class="pull-right">
+    <a href="{{@BASE_URL}}/admin/remixes/add" class="btn btn-primary pull-right">
+      <i class="icon-plus icon-white"></i> Añadir remezcla
+    </a>
+  </li>
+</ul>
+
+<include href="pagination_template.html"/>
+
+<table id="remixesTable" class="table table-striped tablesorter">
+
+  <thead>
+    <tr>
+      <th>Título</th>
+      <th>Autor</th>
+      <th>Destacado</th>
+      <th>Url (EN)</th>
+      <th>&nbsp;</th>
+    </tr>
+  </thead>
+
+  <tbody>
+  <check if="isset($remixes)">
+  <repeat group="{{@remixes}}" key="{{@key}}" value="{{@remix}}">
+
+    <tr>
+      <td>{{@remix->rem_title}}</td>
+      <td>{{@remix->rem_author}}</td>
+      <td><input disabled="" type="checkbox" {{@remix->rem_highlight==1 ? "checked" : ""}}/></td>
+      <td><a href="http://vimeo.com/{{@remix->rem_url}}" target="_blank">{{@remix->rem_url}}</a></td>
+      <td align="center">
+        &nbsp;
+        <a href="{{@BASE_URL}}/admin/remixes/edit/{{@remix->rem_id}}"><i class="icon-pencil"></i></a>
+        &nbsp;
+        <a  onclick="if(!confirm('¿Seguro que deseas eliminar el remix {{@remix->rem_title}}?')) return false;"
+            href="{{@BASE_URL}}/admin/remixes/delete/{{@remix->rem_id}}">
+          <i class="icon-trash"></i>
+        </a>
+      </td>
+    </tr>  
+
+  </repeat>
+  </check>
+  </tbody>
+</table>
+
+<include href="pagination_template.html"/>
+
+<script type="text/javascript">
+
+  $(document).ready(function() {
+    $("#remixesTable").tablesorter({
+      headers: {
+        1: { sorter: "spText" },
+        2: { sorter: "spText" },
+        3: { sorter: false },
+        4: { sorter: "spText" }
+      }
+    });
+  });
+
+</script>

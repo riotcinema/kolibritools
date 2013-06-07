@@ -1,0 +1,60 @@
+<!--
+/**
+ * cosmonautexperience.com
+ *
+ * Website for The Cosmonaut movie.
+ *
+ * NOTE OF LICENSE
+ * Licensed under GNU General Public License version 3.0
+ *
+ * Copyright (c) 2013 Tecnilógica Soluciones Avanzadas.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the GNU Public License v3.0
+ * which accompanies this distribution, and is available at
+ * http://www.gnu.org/licenses/gpl.html
+ *
+ * Contributors:
+ * Tecnilógica Soluciones Avanzadas - initial API and implementation
+ *
+ * @package   cosmonautexperience
+ * @author    Tecnilógica soluciones avanzadas
+ * @copyright Copyright (c) 2003 - 2013, Tecnilógica soluciones avanzadas, S.A. (http://tecnilogica.com/)
+ * @license   http://www.gnu.org/licenses/gpl-3.0.html
+ * @link      http://cosmonautexperience.com
+ *
+ *
+ *
+ * press_template.html
+ *
+-->
+
+<section id="press-area" class="download">
+  <div class="subwrapper">
+    <h2 class="title">{{ @dict_abo_press_area}}</h2>
+    <h4>{{ @dict_abo_for_journalist }}</h4>
+    <ul>
+      <li>
+        <a href="{{@BASE_URL}}/download/photo" target="_blank" title="{{ @dict_abo_download_photo }}">
+          <img src="{{@_PATH}}/images/download-arrow.png" class="download-arrow" alt="download arrow">
+          <img src="{{@_PATH}}/images/zip-icon.png" alt="zip download">
+        </a>
+        <p>{{ @dict_abo_download_photo }}</p>
+      </li>
+      <li>
+        <a href="{{@BASE_URL}}/download/press" target="_blank" title="{{ @dict_abo_download_press }}">
+          <img src="{{@_PATH}}/images/download-arrow.png" class="download-arrow" alt="download arrow">
+          <img src="{{@_PATH}}/images/zip-icon.png" alt="zip download">
+        </a>
+        <p>{{ @dict_abo_download_press }}</p>
+      </li>
+      <li>
+        <a href="{{@BASE_URL}}/download/plan" target="_blank" title="{{ @dict_abo_download_plan }}">
+          <img src="{{@_PATH}}/images/download-arrow.png" class="download-arrow" alt="download arrow">
+          <img src="{{@_PATH}}/images/pdf-icon.png" alt="pdf download">
+        </a>
+        <p>{{ @dict_abo_download_plan }}</b></p>
+      </li>
+    </ul>
+    <div class="clearfix"></div>
+  </div>
+</section>

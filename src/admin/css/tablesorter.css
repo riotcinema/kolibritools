@@ -1,0 +1,14 @@
+table.tablesorter thead tr .header {
+	background-image: url(../images/bg.gif);
+	background-repeat: no-repeat;
+	background-position: center left;
+	cursor: pointer;
+	padding-left: 20px;
+}
+
+table.tablesorter thead tr .header.headerSortUp{
+	background-image: url(../images/asc.gif);
+}
+table.tablesorter thead tr .header.headerSortDown {
+	background-image: url(../images/desc.gif);
+}

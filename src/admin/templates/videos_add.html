@@ -1,0 +1,193 @@
+<!--
+/**
+ * cosmonautexperience.com
+ *
+ * Website for The Cosmonaut movie.
+ *
+ * NOTE OF LICENSE
+ * Licensed under GNU General Public License version 3.0
+ *
+ * Copyright (c) 2013 Tecnilógica Soluciones Avanzadas.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the GNU Public License v3.0
+ * which accompanies this distribution, and is available at
+ * http://www.gnu.org/licenses/gpl.html
+ *
+ * Contributors:
+ * Tecnilógica Soluciones Avanzadas - initial API and implementation
+ *
+ * @package   cosmonautexperience
+ * @author    Tecnilógica soluciones avanzadas
+ * @copyright Copyright (c) 2003 - 2013, Tecnilógica soluciones avanzadas, S.A. (http://tecnilogica.com/)
+ * @license   http://www.gnu.org/licenses/gpl-3.0.html
+ * @link      http://cosmonautexperience.com
+ *
+ *
+ *
+ * videos_add.html
+ *
+ * Template to add / edit a Video.
+-->
+
+<ul class="breadcrumb">
+  <li>
+    <a href="{{@BASE_URL}}/admin/">Home</a> <span class="divider">&gt;</span>
+  </li>
+  <li>
+    <a href="{{@BASE_URL}}/admin/videos/list">Videos</a> <span class="divider">&gt;</span>
+  </li>
+  <li class="active">Añadir / Editar</li>
+</ul>
+
+<include href="error_template.html"/>
+
+<form method="post" action="{{@BASE_URL}}/admin/videos/update" id="f_edit" enctype="multipart/form-data" class="form-horizontal">
+
+  <input type="hidden" value="{{isset(@POST.vid_id) ? @POST.vid_id : NULL}}" name="vid_id"/>
+
+  <fieldset>
+
+    <div class="control-group">
+      <label for="vid_order" class="control-label">Orden</label>
+      <div class="controls">
+        <input type="text" value="{{isset(@POST.vid_order) ? @POST.vid_order : NULL}}" name="vid_order" class="input-xlarge"/>
+      </div>
+    </div>
+
+    <div class="control-group">
+      <label for="vid_title_en" class="control-label">Título (Inglés)</label>
+      <div class="controls">
+        <input type="text" value="{{isset(@POST.vid_title_en) ? @POST.vid_title_en : NULL}}" name="vid_title_en" class="input-xlarge"/>
+      </div>
+    </div>
+
+    <div class="control-group">
+      <label for="vid_title_es" class="control-label">Título (Español)</label>
+      <div class="controls">
+        <input type="text" value="{{isset(@POST.vid_title_es) ? @POST.vid_title_es : NULL}}" name="vid_title_es" class="input-xlarge"/>
+      </div>
+    </div>
+
+    <div class="control-group">
+      <label for="vid_category" class="control-label">Categoría</label>
+      <div class="controls">
+        <select name="vid_category" id="vid_category" class="input-xlarge">
+          <option value=""> --- </option>
+          <repeat group="{{@categories}}" key="{{@c_key}}" value="{{@category}}">
+            <option value="{{@category['cat_id']}}" <check if="{{isset(@POST.vid_category) && @POST.vid_category==@category['cat_id']}}">selected</check>>{{@category['cat_value']}}</option>
+          </repeat>
+        </select>
+      </div>
+    </div>
+
+    <div class="control-group">
+      <label for="vid_url_en" class="control-label">URL (Inglés)</label>
+      <div class="controls">
+        <input type="text" value="{{isset(@POST.vid_url_en) ? @POST.vid_url_en : NULL}}" name="vid_url_en" class="input-xlarge"/>
+      </div>
+    </div>
+
+    <div class="control-group">
+      <label for="vid_url_es" class="control-label">URL (Español)</label>
+      <div class="controls"><input type="text" value="{{isset(@POST.vid_url_es) ? @POST.vid_url_es : NULL}}" name="vid_url_es" class="input-xlarge"/></div>
+    </div>
+
+    <div class="control-group">
+      <label for="vid_protected" class="control-label">¿Protegido?</label>
+      <div class="controls">
+        <input type="checkbox" {{(isset(@POST.vid_protected) && @POST.vid_protected) ? 'checked' : ''}} name="vid_protected" class="input-xlarge"/>
+      </div>
+    </div>
+
+<!--     <div class="control-group">
+      <label for="vid_published" class="control-label">¿Publicado?</label>
+      <div class="controls">
+        <input type="checkbox" {{(isset(@POST.vid_published) && @POST.vid_published) ? 'checked' : ''}} name="vid_published" class="input-xlarge"/>
+      </div>
+    </div>
+ -->
+		<div class="control-group">
+		  <label for="vid_release" class="control-label">Publicación</label>
+		  <div class="controls">
+	      <input type="text" value="{{isset(@POST.vid_release) ? @POST.vid_release : NULL}}" name="vid_release" id="vid_release" />
+      </div>
+		</div>
+
+    <div class="control-group">
+      <label for="vid_synopsis_short_en" class="control-label">Sinopsis corta (Inglés)</label>
+      <div class="controls">
+        <textarea type="textarea" name="vid_synopsis_short_en" class="input-xlarge" id="vid_synopsis_short_en"/>{{isset(@POST.vid_synopsis_short_en) ? @POST.vid_synopsis_short_en : NULL}}</textarea>
+      </div>
+    </div>
+
+    <div class="control-group">
+      <label for="vid_synopsis_short_es" class="control-label">Sinopsis corta (Español)</label>
+      <div class="controls">
+        <textarea type="textarea" name="vid_synopsis_short_es" class="input-xlarge" id="vid_synopsis_short_es"/>{{isset(@POST.vid_synopsis_short_es) ? @POST.vid_synopsis_short_es : NULL}}</textarea>
+      </div>
+    </div>
+
+    <div class="control-group">
+      <label for="vid_synopsis_long_en" class="control-label">Sinopsis larga (Inglés)</label>
+      <div class="controls">
+        <textarea type="textarea" name="vid_synopsis_long_en" class="input-xlarge" id="vid_synopsis_long_en"/>{{isset(@POST.vid_synopsis_long_en) ? @POST.vid_synopsis_long_en : NULL}}</textarea>
+      </div>
+    </div>
+
+    <div class="control-group">
+      <label for="vid_synopsis_long_es" class="control-label">Sinopsis larga (Español)</label>
+      <div class="controls">
+        <textarea type="textarea" name="vid_synopsis_long_es" class="input-xlarge" id="vid_synopsis_long_es"/>{{isset(@POST.vid_synopsis_long_es) ? @POST.vid_synopsis_long_es : NULL}}</textarea>
+      </div>
+    </div>
+
+    <div class="control-group">
+      <label for="vid_duration" class="control-label">Duración (segundos)</label>
+      <div class="controls"><input type="text" value="{{isset(@POST.vid_duration) ? @POST.vid_duration : NULL}}" name="vid_duration" class="input-xlarge"/></div>
+    </div>
+
+    <div class="control-group">
+      <label for="vid_thumbnail" class="control-label">Miniatura</label>
+      <div class="controls">
+        <input type="text" value="{{isset(@POST.vid_thumbnail) ? @POST.vid_thumbnail : NULL}}" name="vid_thumbnail" class="input-xlarge"/>
+      </div>
+    </div>
+
+    <div class="control-group">
+      <label for="vid_cover" class="control-label">Portada</label>
+      <div class="controls">
+        <input type="text" value="{{isset(@POST.vid_cover) ? @POST.vid_cover : NULL}}" name="vid_cover" class="input-xlarge"/>
+      </div>
+    </div>
+
+    <div class="control-group">
+      <label for="vid_slug" class="control-label">Slug</label>
+      <div class="controls">
+        <input type="text" value="{{isset(@POST.vid_slug) ? @POST.vid_slug : NULL}}" name="vid_slug" class="input-xlarge"/>
+      </div>
+    </div>
+
+  </fieldset>
+
+  <div class="form-actions">
+    <a class="btn" href="{{@BASE_URL}}/admin/videos/list">Cancelar</a>
+    <button class="btn btn-primary" type="submit" id="submit">Modificar</button>
+  </div>
+
+</form>
+
+<script type="text/javascript">
+  $(document).ready(function() {
+    $.each($("textarea"), function(index, item) {
+      $(item).css("width", "500px");
+      $(item).attr("rows", "5");
+    });
+
+    $('#vid_release').datetimepicker({
+    	dateFormat: "yy/mm/dd",
+    	hourGrid: 2,
+    	minuteGrid: 10,
+    	timeFormat: "HH:mm:00"
+    });
+  });
+</script>

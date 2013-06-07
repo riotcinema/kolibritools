@@ -1,0 +1,95 @@
+<!--
+/**
+ * cosmonautexperience.com
+ *
+ * Website for The Cosmonaut movie.
+ *
+ * NOTE OF LICENSE
+ * Licensed under GNU General Public License version 3.0
+ *
+ * Copyright (c) 2013 Tecnilógica Soluciones Avanzadas.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the GNU Public License v3.0
+ * which accompanies this distribution, and is available at
+ * http://www.gnu.org/licenses/gpl.html
+ *
+ * Contributors:
+ * Tecnilógica Soluciones Avanzadas - initial API and implementation
+ *
+ * @package   cosmonautexperience
+ * @author    Tecnilógica soluciones avanzadas
+ * @copyright Copyright (c) 2003 - 2013, Tecnilógica soluciones avanzadas, S.A. (http://tecnilogica.com/)
+ * @license   http://www.gnu.org/licenses/gpl-3.0.html
+ * @link      http://cosmonautexperience.com
+ *
+ *
+ *
+ * admins_list.html
+ *
+ * Template to display a paginated list of admin users.
+-->
+
+<ul class="breadcrumb">
+  <li><a href="{{@BASE_URL}}/admin/">Home</a> <span class="divider">&gt;</span></li>
+  <li class="active">Administradores <span class="badge badge-light">{{count(@admins)}}</span></li>
+  <li class="pull-right">
+    <a href="{{@BASE_URL}}/admin/admins/add" class="btn btn-primary pull-right">
+      <i class="icon-plus icon-white"></i> Añadir administrador
+    </a>
+  </li>
+</ul>
+
+<include href="pagination_template.html"/>
+
+<table id="adminsTable" class="table table-striped tablesorter">
+
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Usuario</th>
+      <th>e-mail</th>
+      <th>Nivel</th>
+      <th>&nbsp;</th>
+    </tr>
+  </thead>
+
+  <tbody>
+  <check if="isset(@admins)">
+  <repeat group="{{@admins}}" key="{{@key}}" value="{{@admin}}">
+
+    <tr>
+      <td>{{@admin->usu_id}}</td>
+      <td>{{@admin->usu_nick}}</td>
+      <td>{{@admin->usu_email}}</td>
+      <td>{{@admin->usu_level}}</td>
+      <td align="center">
+        &nbsp;
+        <a href="{{@BASE_URL}}/admin/admins/edit/{{@admin->usu_id}}"><i class="icon-pencil"></i></a>
+        &nbsp;
+        <a  onclick="if(!confirm('¿Seguro que deseas eliminar el administrador {{@admin->usu_email}}?')) return false;"
+            href="{{@BASE_URL}}/admin/admins/delete/{{@admin->usu_id}}">
+          <i class="icon-trash"></i>
+        </a>
+      </td>
+    </tr>  
+
+  </repeat>
+  </check>
+  </tbody>
+</table>
+
+<include href="pagination_template.html"/>
+
+<script type="text/javascript">
+
+  $(document).ready(function() {
+    $("#adminsTable").tablesorter({
+      headers: {
+        1: { sorter: "spNumber" },
+        2: { sorter: "spText" },
+        3: { sorter: "spNumber" }
+      }
+    });
+  });
+
+</script>

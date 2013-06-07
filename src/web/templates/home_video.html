@@ -1,0 +1,46 @@
+<!--
+/**
+ * cosmonautexperience.com
+ *
+ * Website for The Cosmonaut movie.
+ *
+ * NOTE OF LICENSE
+ * Licensed under GNU General Public License version 3.0
+ *
+ * Copyright (c) 2013 Tecnilógica Soluciones Avanzadas.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the GNU Public License v3.0
+ * which accompanies this distribution, and is available at
+ * http://www.gnu.org/licenses/gpl.html
+ *
+ * Contributors:
+ * Tecnilógica Soluciones Avanzadas - initial API and implementation
+ *
+ * @package   cosmonautexperience
+ * @author    Tecnilógica soluciones avanzadas
+ * @copyright Copyright (c) 2003 - 2013, Tecnilógica soluciones avanzadas, S.A. (http://tecnilogica.com/)
+ * @license   http://www.gnu.org/licenses/gpl-3.0.html
+ * @link      http://cosmonautexperience.com
+ *
+ *
+ *
+ * home_video.html
+ *
+-->
+
+<iframe id="vimeoTrailer"
+        class="vimeo"
+        src="http://player.vimeo.com/video/{{@VIMEO_LOOP_ID}}?api=1&title=0&amp;byline=0&amp;portrait=0&amp;color=ffffff&loop=1&autoplay=1"
+        width="100%"
+        frameborder="0"
+        webkitAllowFullScreen mozallowfullscreen allowFullScreen>
+</iframe>
+
+<section id="video" class="section_video" style="width:100%">
+  <div class="wrapper" id="video_wrapper">
+    <h2></h2>
+    <h3>{{@dict_com_a_film_made_by}} <b>{{@dict_com_5000_people}}</b></h3>
+    <p>{{@dict_hom_stats_get_lost_1}}<br/>{{@dict_hom_stats_get_lost_2}}<br/>{{@dict_hom_stats_get_lost_3}}</p>
+    <a href="{{@BASE_URL}}/watch_it_now" class="btn small bg-blue black">{{@countdown_message}}</a>
+  </div>
+</section>

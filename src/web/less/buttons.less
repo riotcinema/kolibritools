@@ -1,0 +1,50 @@
+/* Buttons =================================================== */
+.btn{
+	display: block;
+	text-align: center;
+	text-transform: uppercase;
+	text-decoration: none;
+
+	.tiny,
+	&.tiny{
+		font-size: 14px;
+		height: 25px;
+		line-height: 28px;
+		.rounded(5px);
+		padding: 0 10px;
+	}
+	.line,
+  &.line{
+    display:block;
+    font-size: 11px;
+    font-weight:bold;
+    height: 20px;
+    line-height: 21px;
+    width:65px;
+    .rounded(3px);
+    padding: 0 10px;
+  }
+
+	.small,
+	&.small{
+		font-size: 17px;
+		height: 45px;
+		line-height: 45px;
+		.rounded(5px);
+		width: 158px;
+		&.price{
+		  position:relative;
+		  padding: 0 20px 0 70px;
+		  span{
+		    border-right:1px solid @black;
+		    left:0
+		    ;
+		    position:absolute;
+		    height:45px;
+		    width:56px;
+		  }
+		}
+	}
+	.medium{}
+	.big{}
+}

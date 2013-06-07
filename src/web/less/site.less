@@ -1,0 +1,116 @@
+// ==========================================================
+
+// 320 and Up by Andy Clarke
+// Version: 3.0
+// URL: http://stuffandnonsense.co.uk/projects/320andup/
+// Apache License: v2.0. http://www.apache.org/licenses/LICENSE-2.0
+
+// ==========================================================
+
+/* Page =================================================== */
+
+// 1. ROOT 					==============================
+
+@-webkit-viewport { 
+width : device-width; }
+
+@-moz-viewport { 
+width : device-width; }
+
+@-ms-viewport { 
+width : device-width; }
+
+@-o-viewport { 
+width : device-width; }
+
+@viewport { 
+width : device-width; }
+
+html {
+background : @bodycolor; 
+font-size : 62.5%; //16px
+-webkit-overflow-scrolling : touch; 
+-webkit-tap-highlight-color : lighten(@basecolor, 75%); 
+-webkit-text-size-adjust : 100%; 
+-ms-text-size-adjust : 100%; }
+
+body { 
+margin : 0;
+padding : 0;
+width : 100%;
+background-color: @bodycolor;
+font-family : @basefont;
+.font-size();
+line-height : @baselineheight;
+color : @textcolor; }
+
+// 2. TYPOGRAPHY 			==============================
+// 3. COLOUR 				==============================
+	//colours
+.black{color:@black;}
+.blue{color:@blue;}
+.grey{color:@grey;}
+.red{color:@red;}
+.white{color:@white;}
+
+	//bg colours
+.bg-black{background-color:@black;}
+.bg-blue{background-color:@blue;}
+.bg-grey{background-color:@grey;}
+.bg-red{background-color:@red;}
+.bg-white{background-color:@white;}
+// 4. TEXTURE 				==============================
+// 5. ELEMENTS 				==============================
+div.tooltip{
+   background:@white;
+   color:@black;
+   font-size:13px;
+   font-family: 'Helvetica', Arial, Sans-serif;
+   padding:9px 10px;
+   position:absolute;
+   top: -28px;
+   left: 142px;
+   .rounded(5px);
+   span{
+     background:@white;
+     display: block;
+     position: absolute;
+     height: 10px;
+     width: 10px;
+     top:33px;
+     left:12px;
+     .rotate(45deg);
+   }
+ }
+ .lightbox .cerrar {
+    background: url('../images/cosmo-assets.png') 0 -70px, no-repeat;
+    padding: 10px 4px;
+    position: absolute;
+    right: -65px;
+    top: 0;
+  }
+  .ui-widget-overlay {
+    background:#000;
+    left: 0;
+    position: fixed;
+    bottom: 0;
+    width: 100%!important;
+    height: 100%!important;
+    .opacity(.7);
+    }
+  .ui-icon-closethick{
+    display:none;
+  }
+  
+// 6. LAYOUT 				==============================
+.wrapper{
+	margin: 0 auto;
+	width: 1024px;
+}
+.subwrapper{
+	margin: 0 auto;
+	width: 905px;
+}
+// 7. VENDOR-SPECIFIC 		==============================
+// 8. MODERNIZR 			==============================
+// 9. TEMPLATE SPECIFICS 	==============================

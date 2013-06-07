@@ -1,0 +1,56 @@
+<!--
+/**
+ * cosmonautexperience.com
+ *
+ * Website for The Cosmonaut movie.
+ *
+ * NOTE OF LICENSE
+ * Licensed under GNU General Public License version 3.0
+ *
+ * Copyright (c) 2013 Tecnilógica Soluciones Avanzadas.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the GNU Public License v3.0
+ * which accompanies this distribution, and is available at
+ * http://www.gnu.org/licenses/gpl.html
+ *
+ * Contributors:
+ * Tecnilógica Soluciones Avanzadas - initial API and implementation
+ *
+ * @package   cosmonautexperience
+ * @author    Tecnilógica soluciones avanzadas
+ * @copyright Copyright (c) 2003 - 2013, Tecnilógica soluciones avanzadas, S.A. (http://tecnilogica.com/)
+ * @license   http://www.gnu.org/licenses/gpl-3.0.html
+ * @link      http://cosmonautexperience.com
+ *
+ *
+ *
+ * site_licenses_es.html
+ *
+-->
+
+
+<div class="lightbox lightbox-login" id="dialog-login">
+
+  <form id="form-login">
+
+    <a id="dialog-login-close" href="#" class="cerrar"></a>
+
+    <h4>{{@dict_log_are_you}}<br/>{{@dict_log_insert_your}}</h4>
+
+    <div class="box-input">
+      <input id="input_login" type="text" placeholder="{{@dict_log_your_email}}" style="margin-right: 20px;">
+      <input id="input_password" type="password" placeholder="{{@dict_log_your_password}}">
+    </div>
+
+    <a href="#" title="{{@dict_log_sign_in}}" class="btn small bg-black white" id="link-sign-in">{{@dict_log_sign_in}}</a>
+    <a href="{{@BASE_URL}}/k_pass" title="{{@dict_log_what_is_this}}" class="what">
+      {{@dict_log_what_is_this}}
+    </a>
+    <br/>
+    <a href="{{@lang_url_shop}}/index.php?controller=password" title="{{@dict_log_forgot}}" id="" target="_blank" class="forgot">
+      {{@dict_log_forgot}}
+    </a>
+
+  </form>
+
+</div>

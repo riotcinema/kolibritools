@@ -1,0 +1,92 @@
+<!--
+/**
+ * cosmonautexperience.com
+ *
+ * Website for The Cosmonaut movie.
+ *
+ * NOTE OF LICENSE
+ * Licensed under GNU General Public License version 3.0
+ *
+ * Copyright (c) 2013 Tecnilógica Soluciones Avanzadas.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the GNU Public License v3.0
+ * which accompanies this distribution, and is available at
+ * http://www.gnu.org/licenses/gpl.html
+ *
+ * Contributors:
+ * Tecnilógica Soluciones Avanzadas - initial API and implementation
+ *
+ * @package   cosmonautexperience
+ * @author    Tecnilógica soluciones avanzadas
+ * @copyright Copyright (c) 2003 - 2013, Tecnilógica soluciones avanzadas, S.A. (http://tecnilogica.com/)
+ * @license   http://www.gnu.org/licenses/gpl-3.0.html
+ * @link      http://cosmonautexperience.com
+ *
+ *
+ *
+ * video_template.html
+ *
+-->
+
+<div id="video-detail" class="lightbox">
+
+  <a id="close-video-detail" class="cerrar" href="#"></a>
+
+  <div class="wrapper">
+
+    <div class="subwrapper" id="video_detail_subwrapper">
+
+      <input type="hidden" value="" name="vid_id" id="vid_id"/>
+      <input type="hidden" value="" name="vid_url" id="vid_url"/>
+      <input type="hidden" value="" name="vid_slug" id="vid_slug"/>
+      <input type="hidden" value="" name="vid_protected" id="vid_protected"/>
+
+      <div id="carrousel">
+        <a href="#" id="back"></a>
+        <a href="#" id="next"></a>
+
+        <check if="{{!SessionManager::is_logged() }}">
+        <true>
+        <div class="transparency">
+        </div>
+        <div class="notlogged">
+          <img src="{{@_PATH}}/images/video-detail/kpass-logo.png" alt="K-pass logo" />
+          <h3>{{@dict_vid_you_need_a_k_pass}}</h3>
+          <span>{{@dict_vid_buy_it_for_just}} <a href="{{@BASE_URL}}/k_pass" id="more_information_link">{{@dict_vid_more_info}}</a></span>
+          <p>
+            <a href="{{@lang_url_k_pass}}" class="btn small bg-white red" id="get_your_k_pass_link">{{@dict_vid_get_your_k_pass}}</a>
+            <span class="italic">{{@dict_vid_or}}</span>
+            <a id="sign_in_link" class="sign_in_link" href="#">{{@dict_vid_sign_in}}</a>
+          </p>
+        </div>
+        </true>
+        </check>
+        <ul>
+          <li id="iframe_container">
+            <iframe id="iframe-video-detail"
+              class="vimeo"
+              src=""
+              width="905"
+              height="489"
+              frameborder="0"
+              webkitAllowFullScreen mozallowfullscreen allowFullScreen>
+            </iframe>
+            <img src="" id="vid-detail-cover" alt="" />
+            <span id="span_play"><a href="#" class="icon-play" id="icon-play"></a></span>
+          </li>
+        </ul>
+      </div>
+
+      <section class="video-detail-description">
+        <h1 class="title" id="vid-detail-title"></h1>
+        <p id="vid-detail-synopsis"></p>
+        <span class="duration icon-time" id="vid-detail-duration"></span>
+      </section>
+
+      <div class="social" id="div_social">
+      </div>
+      <div class="clearfix"></div>
+
+    </div>
+  </div>
+</div>

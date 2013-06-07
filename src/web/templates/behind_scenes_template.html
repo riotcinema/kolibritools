@@ -1,0 +1,210 @@
+<!--
+/**
+ * cosmonautexperience.com
+ *
+ * Website for The Cosmonaut movie.
+ *
+ * NOTE OF LICENSE
+ * Licensed under GNU General Public License version 3.0
+ *
+ * Copyright (c) 2013 Tecnilógica Soluciones Avanzadas.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the GNU Public License v3.0
+ * which accompanies this distribution, and is available at
+ * http://www.gnu.org/licenses/gpl.html
+ *
+ * Contributors:
+ * Tecnilógica Soluciones Avanzadas - initial API and implementation
+ *
+ * @package   cosmonautexperience
+ * @author    Tecnilógica soluciones avanzadas
+ * @copyright Copyright (c) 2003 - 2013, Tecnilógica soluciones avanzadas, S.A. (http://tecnilogica.com/)
+ * @license   http://www.gnu.org/licenses/gpl-3.0.html
+ * @link      http://cosmonautexperience.com
+ *
+ *
+ *
+ * behind_scenes_template.html
+ *
+-->
+
+<include if="{{ isset(@vid_detail) }}" href="{{ @vid_detail }}" />
+
+<section class="background">
+
+  <!--  BEHIND THE SCENES -->
+	<section id="behind">
+	  <div class="title"><h2>{{@dict_beh_its_been}}<br/>{{@dict_beh_revive}}</h2></div>
+	  <div class="center-tabs">
+	    <ul class="tabs">
+	      <li class="first">
+	        <a href="{{@BASE_URL}}/timeline" title="{{@dict_com_timeline}}">{{@dict_com_timeline}}</a>
+	      </li>
+	      <li class="second selected">
+	        <a href="{{@BASE_URL}}/behind_the_scenes" title="{{@dict_com_materials}}">{{@dict_com_materials}}</a>
+	      </li>
+	    </ul>
+	  </div>
+	</section>
+
+
+	<!-- SLIDER -->
+	<section id="slider">
+	  <div class="wrapper">
+	    <div class="content-slider" id="carousel-wrapper">
+	      <div class="controls" id="carousel-controls">
+	        <a href="#" class="prev" id="link-prev"><span></span></a>
+	        <a href="#" class="next" id="link-next"><span></span></a>
+	      </div>
+	
+	      <div class="slider" id="carousel-container">
+	        <div class="virtual" id="carousel-items">
+	          <repeat group="{{@diaries}}" key="{{@k}}" value="{{@diary}}">
+	            <div class="step">
+	              <div class="lateral" id="div_item_{{@diary['vid_slug']}}">
+	                <h3>{{@dict_beh_video_diaries}}</h3>
+	                <div class="ico-play" data-slug="{{@diary['vid_slug']}}"><span></span>
+	                </div>
+	                <p>{{@k+1}}/{{count(@diaries)}}</p>
+	                <h2>{{@diary["vid_title"]}}</h2>
+	              </div>
+	              <check if="!empty(@diary['vid_thumbnail'])" ><true><img src="{{@_PATH}}/images/covers/{{@diary['vid_thumbnail']}}" alt="{{@diary['vid_title']}}" /></true></check>
+	            </div>
+	          </repeat>
+		      </div>
+		    </div>
+		  </div>
+		</div>
+	</section>
+
+
+
+	<!-- VIDEO-GALLERY -->
+	<section id="gallery">
+	  <div class="wrapper">
+	    <h2 class="title">{{@dict_com_eastern_eggs}}</h2>
+	    <p class="subtittle">{{@dict_beh_eastern_p}}</p>
+	    <div class="">
+	      <ul class="video-gallery">
+	        <repeat group="{{@easterns}}" key="{{@k}}" value="{{@eastern}}">
+	        <check if="{{@eastern['vid_published']==1}}">
+	        <true>
+	          <li>
+	            <div class="info-hover thumbnail">
+	              <span class="">{{@eastern['vid_title']}}</span>
+	              <a href="#" class="play" data-slug="{{@eastern['vid_slug']}}"></a>
+	            </div>
+	            <a href="#" class="disabled"></a>
+	            <img src="{{@_PATH}}/images/covers/{{@eastern['vid_thumbnail']}}" alt="{{@eastern['vid_title']}}" />
+	          </li>
+	        </true>
+	        <false>
+	          <li class="desaturate">
+	            <a href="#" class="disabled"></a>
+	            <img src="{{@_PATH}}/images/covers/{{@eastern['vid_thumbnail']}}" alt="{{@eastern['vid_title']}}" />
+	          </li>
+	        </false>
+	        </check>
+	      </repeat>
+	      </ul>
+	 
+	      <div class="soundtrack">
+	        <div class="wrapper">
+	          <h2 class="title">{{@dict_beh_soundtracks}}</h2>
+	          <ul class="reasons">
+	
+	            <li>
+	              <article>
+	                <h3>{{@dict_beh_i_hear_voices}}</h3>
+	                <p>{{@dict_beh_i_hear_voices_p}}</p>
+	                <check if="!empty({{@URL_DOWN_I_HEAR}})">
+	                  <true>
+	                    <check if="{{SessionManager::is_logged() }}">
+		                    <true><a href="{{@BASE_URL}}/download/voices" class="btn line bg-blue black" target="_blank">{{@dict_com_download}}</a></true>
+		                    <false><a href="{{@BASE_URL}}/k_pass" class="btn line bg-red white" >{{@dict_com_buy_k_pass}}</a></false>
+		                  </check>
+	                  </true>
+	                  <false>
+	                   <a href="#" class="btn line bg-blue black unavailable">{{@dict_com_coming}}</a>
+	                  </false>
+	                </check>
+	              </article>
+	            </li>
+	
+	            <li>
+	              <article>
+	                <h3>{{@dict_beh_original}}</h3>
+	                <p>{{@dict_beh_original_p}}</p>
+	                <check if="!empty({{@URL_DOWN_SOUNDTRACK}})">
+	                  <true>
+	                    <check if="{{SessionManager::is_logged() }}">
+		                    <true><a href="{{@BASE_URL}}/download/soundtrack" class="btn line bg-blue black">{{@dict_com_download}}</a></true>
+		                    <false><a href="{{@BASE_URL}}/k_pass" class="btn line bg-red white" >{{@dict_com_buy_k_pass}}</a></false>
+	                    </check>
+	                  </true>
+                    <false>
+                     <a href="#" class="btn line bg-blue black unavailable">{{@dict_com_coming}}</a>
+                    </false>
+	                </check>
+	              </article>
+	            </li>
+	
+	            <li>
+	              <article>
+	                <h3>{{@dict_beh_transmedia}}</h3>
+	                <p>{{@dict_beh_transmedia_p}}</p>
+	                <check if="!empty({{@URL_DOWN_TRANS_SESS}})">
+	                  <true>
+	                    <check if="{{SessionManager::is_logged() }}">
+	                      <true><a href="{{@BASE_URL}}/download/transmedia" class="btn line bg-blue black">{{@dict_com_download}}</a></true>
+	                      <false><a href="{{@BASE_URL}}/k_pass" class="btn line bg-red white" >{{@dict_com_buy_k_pass}}</a></false>
+	                    </check>
+	                  </true>
+                    <false>
+                     <a href="#" class="btn line bg-blue black unavailable">{{@dict_com_coming}}</a>
+                    </false>
+	                </check>
+	              </article>
+	            </li>
+	
+	          </ul> <!-- reasons -->
+	        </div> <!-- wrapper -->
+	      </div> <!-- soundtrack -->
+
+        <div class="clearfix"></div>
+
+	    </div>
+		
+		  <section id="brokingof">
+		    <h2 class="title">{{@dict_beh_bronking_of}}</h2>
+		    <p>{{@dict_beh_bronking_of_p}}</p>
+		    <div class="cnt_broking">
+		      <a href="#" id="link_to_broking_of" data-slug="bronking_of">
+		        <img src="{{@_PATH}}/images/bronkin-saleived.png" alt="" />
+		        <img src="{{@_PATH}}/images/bronkin-saleived2.png" alt="" />
+		        <img src="{{@_PATH}}/images/bronkin-saleived3.png" alt="" />
+		      </a>
+		      <div class="ico-play" data-slug="bronking_of">
+		        <span></span>
+		      </div>
+		    </div>
+		    <h2 class="title">{{@dict_beh_hummingbird}}</h2>
+		    <p>{{@dict_beh_hummingbird_p1}}{{@dict_beh_hummingbird_p2}}</p>
+		    <div>
+		      <a href="#" id="link_to_hummingbird" data-slug="the_hummingbird">
+		        <img src="{{@_PATH}}/images/humminbird saleived.png" alt="" />
+		        <img src="{{@_PATH}}/images/humminbird saleived2.png" alt="" />
+		        <img src="{{@_PATH}}/images/humminbird saleived3.png" alt="" />
+		      </a>
+		      <div class="ico-play" data-slug="the_hummingbird">
+		        <span></span>
+		      </div>
+		    </div>
+		  </section>
+
+	  </div>      
+	</section>
+
+</section>
+
+<include if="{{ isset(@tem_kpass) }}" href="{{ @tem_kpass }}" />

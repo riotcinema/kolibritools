@@ -1,0 +1,187 @@
+<!--
+/**
+ * cosmonautexperience.com
+ *
+ * Website for The Cosmonaut movie.
+ *
+ * NOTE OF LICENSE
+ * Licensed under GNU General Public License version 3.0
+ *
+ * Copyright (c) 2013 Tecnilógica Soluciones Avanzadas.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the GNU Public License v3.0
+ * which accompanies this distribution, and is available at
+ * http://www.gnu.org/licenses/gpl.html
+ *
+ * Contributors:
+ * Tecnilógica Soluciones Avanzadas - initial API and implementation
+ *
+ * @package   cosmonautexperience
+ * @author    Tecnilógica soluciones avanzadas
+ * @copyright Copyright (c) 2003 - 2013, Tecnilógica soluciones avanzadas, S.A. (http://tecnilogica.com/)
+ * @license   http://www.gnu.org/licenses/gpl-3.0.html
+ * @link      http://cosmonautexperience.com
+ *
+ *
+ *
+ * users_add.html
+ *
+ * Template to add/edit a customer.
+ * IMPORTANT: Customers are stored in the Prestashop app.
+-->
+
+<ul class="breadcrumb">
+  <li><a href="{{@BASE_URL}}/admin/">Home</a> <span class="divider">&gt;</span></li>
+  <li><a href="{{@BASE_URL}}/admin/users/list">Usuarios</a> <span class="divider">&gt;</span></li>
+  <li class="active">Añadir / Editar</li>
+</ul>
+
+<include href="error_template.html"/>
+
+<form method="post" action="{{@BASE_URL}}/admin/users/update" id="f_edit" class="form-horizontal">
+
+  <input type="hidden" value="{{isset(@POST.id_customer) ? @POST.id_customer : NULL}}" name="id_customer"/>
+
+  <fieldset>
+
+    <div class="control-group">
+      <label for="firstname" class="control-label">Nombre</label>
+      <div class="controls">
+        <input type="text" value="{{isset(@POST.firstname) ? @POST.firstname : NULL}}" name="firstname" class="input-xlarge"/>
+      </div>
+    </div>
+
+    <div class="control-group">
+      <label for="lastname" class="control-label">Apellidos</label>
+      <div class="controls">
+        <input type="text" value="{{isset(@POST.lastname) ? @POST.lastname : NULL}}" name="lastname" class="input-xlarge"/>
+      </div>
+    </div>
+
+    <div class="control-group">
+      <label for="note" class="control-label">Código</label>
+      <div class="controls">
+        <input type="text" value="{{isset(@POST.note) ? @POST.note : NULL}}" name="note" class="input-xlarge"/>
+      </div>
+    </div>
+
+    <div class="control-group">
+      <label for="email" class="control-label">Email</label>
+      <div class="controls">
+        <input type="text" value="{{isset(@POST.email) ? @POST.email : NULL}}" name="email" class="input-xlarge"/>
+        <check if="{{isset(@POST.email)}}">
+          <a href="mailto:{{@POST.email}}">
+            <i class="icon-envelope"></i>
+          </a>
+      </check>
+      </div>
+    </div>
+
+    <div class="control-group">
+      <label for="id_default_group" class="control-label">Grupo</label>
+      <div class="controls">
+        <select name="id_default_group" id="id_default_group" class="input-xlarge">
+          <option value=""> --- </option>
+          <repeat group="{{@groups}}" key="{{@g_key}}" value="{{@group}}">
+            <option value="{{@group['id_group']}}" <check if="{{isset(@POST.id_default_group) && @POST.id_default_group==@group['id_group']}}">selected</check>>{{@group['name']}}</option>
+          </repeat>
+        </select>
+      </div>
+    </div>
+
+    <check if="{{empty(@POST.id_customer)}}">
+    <true>
+    <div class="control-group">
+      <label for="password" class="control-label">Contraseña</label>
+      <div class="controls"><input type="password" value="" name="password" class="input-xlarge"/></div>
+    </div>
+    </true>
+  </check>
+  
+  </fieldset>
+
+  <div class="form-actions">
+    <a class="btn" href="{{@BASE_URL}}/admin/users/list">Cancelar</a>
+    <button class="btn btn-primary" type="submit" id="submit">Modificar</button>
+  </div>
+
+</form>
+
+<check if="{{isset(@comments) && count(@comments)>0}}">
+
+  <table class="table table-striped">
+
+    <thead>
+      <tr>
+        <th></th>
+        <th>Video</th>
+        <th>Comentario</th>
+        <th>Fecha</th>
+        <th>&nbsp;</th>
+      </tr>
+    </thead>
+  
+    <tbody>
+    <repeat group="{{@comments}}" value="{{@comment}}">
+
+      <tr>
+        <td align="center">
+        </td>
+        <td>
+          <a href="{{@BASE_URL}}/admin/videos/edit/{{@comment['com_fk_vid_id']}}">{{@comment['vid_title']}}</a>
+        </td>
+        <td>{{substr(@comment['com_comment'],0,50)}}</td>
+        <td>{{@comment['com_date']}}</td>
+        <td align="center">
+          <a href="{{@BASE_URL}}/admin/comments/edit/{{@comment['com_id']}}"><i class="icon-pencil"></i></a>
+          &nbsp;
+          <a onclick="if(!confirm('¿Seguro que deseas eliminar el comentario {{@comment['com_id']}}?')) return false;" href="{{@_PATH}}/admin/comments/delete/{{@comment['com_id']}}"><i class="icon-trash"></i></a>
+        </td>
+      </tr>  
+    </repeat>
+    </tbody>
+    
+    <tfoot>
+      <tr><th colspan="5">{{count(@comments)}} comentarios</th></tr>
+    </tfoot>
+  
+  </table>
+</check>
+
+
+<check if="{{isset(@visualizations) && count(@visualizations)>0}}">
+
+  <table class="table table-striped">
+
+    <thead>
+      <tr>
+        <th></th>
+        <th>Video</th>
+        <th>Fecha</th>
+        <th>&nbsp;</th>
+      </tr>
+    </thead>
+  
+    <tbody>
+    <repeat group="{{@visualizations}}" value="{{@visualization}}">
+
+      <tr>
+        <td align="center">
+        </td>
+        <td>
+          <a href="{{@_PATH}}/admin/videos/edit/{{@visualization['vis_fk_vid_id']}}">{{@visualization['vid_title']}}</a>
+        </td>
+        <td>{{@visualization['vis_date']}}</td>
+        <td align="center">
+          <a onclick="if(!confirm('¿Seguro que deseas eliminar la visualización de {{@visualization['vid_title']}}?')) return false;" href="{{@_PATH}}/admin/visualizations/delete/{{@visualization['vis_id']}}"><i class="icon-trash"></i></a>
+        </td>
+      </tr>  
+    </repeat>
+    </tbody>
+    
+    <tfoot>
+      <tr><th colspan="5">{{count(@visualizations)}} visualizaciones</th></tr>
+    </tfoot>
+  
+  </table>
+</check>

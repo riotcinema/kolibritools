@@ -1,0 +1,50 @@
+/*!
+* cosmonautexperience.com
+ *
+ * Website for The Cosmonaut movie.
+ *
+ * NOTE OF LICENSE
+ * Licensed under GNU General Public License version 3.0
+ *
+ * Copyright (c) 2013 Tecnilógica Soluciones Avanzadas.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the GNU Public License v3.0
+ * which accompanies this distribution, and is available at
+ * http://www.gnu.org/licenses/gpl.html
+ *
+ * Contributors:
+ * Tecnilógica Soluciones Avanzadas - initial API and implementation
+ *
+ * @package   cosmonautexperience
+ * @author    Tecnilógica soluciones avanzadas
+ * @copyright Copyright (c) 2003 - 2013, Tecnilógica soluciones avanzadas, S.A. (http://tecnilogica.com/)
+ * @license   http://www.gnu.org/licenses/gpl-3.0.html
+ * @link      http://cosmonautexperience.com
+ *
+ *
+ *
+ * extra.css
+ */
+
+@CHARSET "UTF-8";
+
+form { margin-bottom:0px }
+
+.centered { margin-right:auto; margin-left:auto; display:block; margin-bottom:10px }
+.input-xlarge { width:290px }
+.subnav { background-color:#EEEEEE; background-image:-moz-linear-gradient(center top,#F5F5F5 0%,#EEEEEE 100%); background-repeat:repeat-x; border:1px solid #E5E5E5; border-radius:4px 4px 4px 4px; height:36px; width:100% }
+.breadcrumb { min-height:29px }
+.breadcrumb li { line-height:28px }
+.connectedSortable { list-style-type: none;	 min-height: 20px; padding: 5px 20px 5px 0px; margin: 0 0 20px 0; background-color: #fff; border: 1px solid #e0e0e0; border: 1px solid rgba(0, 0, 0, 0.08); -webkit-border-radius: 4px; -moz-border-radius: 4px; border-radius: 4px }
+.connectedSortable li { background-color: #f9f9f9; background-repeat: repeat-x; border: 1px solid #e0e0e0; border-radius: 4px 4px 4px 4px; width: 100%; padding: 4px; margin:5px; -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.08); -moz-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.08); box-shadow: 0 1px 1px rgba(0, 0, 0, 0.08) }
+
+.btn-group { margin:0 0 18px }
+.btn-group .btn { background-color:#FBFBFB; background-image:-moz-linear-gradient(center top,#FFFFFF,#F5F5F5); background-repeat:repeat-x; padding:10px 14px }
+.btn-group > .btn:first-child { border-bottom-left-radius:3px; border-top-left-radius:3px }
+.btn-group > .btn:last-child { border-bottom-right-radius:3px; border-top-right-radius:3px }
+.badge { border-radius:3px 3px 3px 3px; padding:1px 4px 2px }
+.badge-light { background-color:#89b7ce }
+
+table.tablesorter thead tr .header { background-image:url(../images/bg.gif); background-repeat:no-repeat; background-position:center left; cursor:pointer; padding-left: 20px }
+table.tablesorter thead tr .header.headerSortUp { background-image:url(../images/asc.gif) }
+table.tablesorter thead tr .header.headerSortDown { background-image:url(../images/desc.gif) }

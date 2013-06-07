@@ -1,0 +1,238 @@
+<!--
+/**
+ * cosmonautexperience.com
+ *
+ * Website for The Cosmonaut movie.
+ *
+ * NOTE OF LICENSE
+ * Licensed under GNU General Public License version 3.0
+ *
+ * Copyright (c) 2013 Tecnilógica Soluciones Avanzadas.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the GNU Public License v3.0
+ * which accompanies this distribution, and is available at
+ * http://www.gnu.org/licenses/gpl.html
+ *
+ * Contributors:
+ * Tecnilógica Soluciones Avanzadas - initial API and implementation
+ *
+ * @package   cosmonautexperience
+ * @author    Tecnilógica soluciones avanzadas
+ * @copyright Copyright (c) 2003 - 2013, Tecnilógica soluciones avanzadas, S.A. (http://tecnilogica.com/)
+ * @license   http://www.gnu.org/licenses/gpl-3.0.html
+ * @link      http://cosmonautexperience.com
+ *
+ *
+ *
+ * mail_organize_event.html
+ *
+-->
+
+<!DOCTYPE html>
+<html lang="es">
+
+  <head>
+    <meta charset="<?php echo $ENCODING; ?>" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  </head>
+
+  <body>
+
+    <div id="lightbox-organize" class="lightbox">
+      <div class="header extra">
+        <h4>{{ @dict_tra_org_organize_your_own }}</h4>
+        <span>{{ @dict_tra_org_describe_your_event }}</span>
+      </div>
+
+      <div class="content">
+
+        <!--YOUR EVENT -->
+        <article class="margin">
+          <div class="form-left">
+            <span class="title">{{@dict_tra_org_your_event}}</span>
+            <div class="event">
+              <span class="type">{{ @dict_tra_org_where }}</span>
+              <span class="type">{{ @dict_tra_org_detailed_description }}</span>
+              <span class="type plus-pad">{{ @dict_tra_org_expected_number }}</span>
+            </div>
+          </div>
+
+            <span class="pag">1/4</span>
+            <div class="form-right">
+              <ul class="checks">
+                <li class="libottom">
+                  <input class="inputType where" name="where" type="radio" {{isset(@where_pro) ? 'checked' : NULL}} id="inputWherePro" />
+                  <label for="where_pro">{{ @dict_tra_org_professional_event }}</label>
+                </li>
+                <li class="libottom large">
+                  <input class="inputType where" name="where" type="radio" {{isset(@where_amateur) ? 'checked' : NULL}} id="inputWhereAmateur" />
+                  <label for="where_amateur">{{ @dict_tra_org_amateur_event }}</label>
+                </li>
+               </ul>
+              <textarea id="inputWhereDescriptor" name="where_descriptor">
+                <check if="{{isset(@where_descriptor)}}">{{@where_descriptor}}</check>
+              </textarea>
+              <ul class="info dates">
+                <li>
+                  <input id="inputWherePeople" name="where_people" type="text" class="" value="{{ isset(@where_people) ? @where_people : NULL}}" />
+                </li>
+              </ul>
+               
+            </div>  
+          </article>
+        
+          <!--EXTRAS -->
+          <article class="margin">
+            <div class="form-left">
+              <span class="title">{{@dict_tra_org_extras}}</span>
+              <span class="type">{{ @dict_tra_org_your_features }}</span>
+            </div>
+
+            <span class="pag">2/4</span>
+            <div class="form-right">
+              <ul class="checks">
+                <li class="libottom">
+                  <input class="inputType" name="extras_profit" type="checkbox" {{isset(@extras_profit) ? 'checked' : NULL}} id="inputExtraProfit" />
+                  <label for="extras_profit">{{@dict_tra_org_non_profit}}</label>
+                </li>
+                <li class="libottom">
+                  <input class="inputType" name="extras_additional" type="checkbox" {{isset(@extras_additional) ? 'checked' : NULL}} id="inputExtraAdditional" />
+                  <label for="extras_additional">{{@dict_tra_org_additional_contents}}</label>
+                </li>
+                <li class="libottom">
+                  <input class="inputType" name="extras_snacks" type="checkbox" {{isset(@extras_snacks) ? 'checked' : NULL}} id="inputExtraSnacks" />
+                  <label for="extras_snacks">{{@dict_tra_org_snacks}}</label>
+                </li>
+                <li>
+                  <input class="inputType" name="extras_party" type="checkbox" {{isset(@extras_party) ? 'checked' : NULL}}" id="inputExtraParty" />
+                  <label for="extras_party">{{@dict_tra_org_after_party}}</label>
+                </li>
+                <li>
+                  <input class="inputType" name="extras_q_and_a" type="checkbox" {{isset(@extras_q_and_a) ? 'checked' : NULL}} id="inputExtraQandA" />
+                  <label for="extras_q_and_a">{{@dict_tra_org_q_and_a}}</label>
+                </li>
+                <li>
+                  <input class="inputType" name="extras_merchandising" type="checkbox" {{isset(@extras_merchandising) ? 'checked' : NULL}} id="inputExtraMerchandising" />
+                  <label for="extras_merchandising" class="dotted">{{ @dict_tra_org_merchandising }}</label>
+                  <span class="tag">80€</span>
+                </li>
+                
+              </ul>
+            </div>
+          </article>
+         
+         
+          <!--TECHNICAL STUFF -->
+          <article class="margin">
+            <div class="form-left">
+              <span class="title">{{@dict_tra_org_technical_stuff}}</span>
+              <div>
+                <span class="type adapt-plus">{{ @dict_tra_org_format }}</span>
+                <span class="type">{{ @dict_tra_org_language }}</span>
+              </div>
+            </div>
+
+            <span class="pag">3/4</span>
+            <div class="form-right">
+              <ul class="checks">
+
+                <li class="libottom">
+                  <input class="inputType format" name="technical" type="radio" {{isset(@tech_streaming) ? "checked" : NULL}} id="inputTechStreaming" />
+                  <label for="technical">{{ @dict_tra_org_streaming }}</label>
+                  <span class="tag free">{{@dict_tra_org_free}}</span>
+                </li>
+
+                <li class="libottom">
+                  <input class="inputType format" name="technical" type="radio" {{isset(@tech_dcp) ? "checked" : NULL}} id="inputTechDCP" />
+                  <label for="technical">{{@dict_tra_org_dcp}}</label>
+                  <span class="tag">240€</span>
+                </li>
+
+                <li class="libottom">
+                  <input class="inputType format" name="technical" type="radio" "{{isset(@tech_dvd) ? "checked" : NULL}} id="inputTechDVD" />
+                  <label for="technical">{{ @dict_tra_org_dvd_bluray }}</label>
+                  <span class="tag">20€</span>
+                </li>
+
+                <li class="libottom">
+                  <input class="inputType format" name="technical" type="radio" {{isset(@tech_35mm) ? "checked" : NULL}} id="inputTech35mm" />
+                  <label class="dotted" for="technical">35mm</label>
+                  <span class="tag">{{ @dict_tra_org_tdb }}</span>
+                </li>
+              </ul>
+
+              <ul class="checks">
+                <li class="libottom">
+                  <input class="inputType lang" name="vo" type="radio" {{isset(@vo) ? "checked" : NULL}} id="inputVO" />
+                  <label for="vo">{{ @dict_tra_org_vo }}</label>
+                </li>
+                <li class="libottom">
+                  <input class="inputType lang" name="vo" type="radio" "{{isset(@vo_spanish) ? "checked" : NULL}} id="inputVOSpanish" />
+                  <label for="vo">{{ @dict_tra_org_vo_spanish }}</label>
+                </li>
+                <li class="libottom">
+                  <input class="inputType lang" name="vo" type="radio" "{{isset(@vo_english) ? "checked" : NULL}} id="inputVOEnglish" />
+                  <label for="vo">{{ @dict_tra_org_vo_english }}</label>
+                </li>
+              </ul>
+            </div>
+          </article>
+          
+          <!--ABOUT YOU -->
+          <article class="margin">
+
+            <div class="form-left">
+              <span class="title">{{@dict_tra_org_about_you}}</span>
+              <div>
+                <span class="type">{{ @dict_tra_org_complete_name }}</span>
+                <span class="type">{{ @dict_tra_org_dni }}</span>
+                <span class="type">{{ @dict_tra_org_address }}</span>
+                <span class="type adapted">{{ @dict_tra_org_date }}</span>
+                <span class="type adapted">{{ @dict_tra_org_phone }}</span>
+                <span class="type adapted">{{ @dict_tra_org_email }}</span>
+              </div>
+            </div>
+            <span class="pag">4/4</span>
+
+            <div class="form-right">
+              <ul class="info dates">
+                <li><input id="inputOrgName" name="complete_name" type="text" value="{{isset(@personal_name) ? @personal_name : '' }}" class="big" /></li>
+                <li><input id="inputOrgID" name="id" value="{{isset(@personal_id) ? @personal_id : '' }}" type="text" /></li>
+                <li><input id="inputOrgAddress" name="address" value="{{isset(@personal_address) ? @personal_address : '' }}" type="text" class="big" /></li>
+                <li><input id="inputOrgDate" name="date" value="{{isset(@personal_date) ? @personal_date : '' }}" type="text" /></li>
+                <li><input id="inputOrgPhone" value="{{isset(@personal_phone) ? @personal_phone : '' }}" name="phone" type="text" /></li>
+                <li><input  id="inputOrgEmail" value="{{isset(@personal_email) ? @personal_email : '' }}" name="email" type="text" /></li>
+              </ul>
+            </div>
+          </article>
+
+          <article>
+            <div class="form-left">
+              <span class="title">{{@dict_tra_org_final_cost}}</span>
+            </div>
+            <div class="form-modules">
+              <div class="module green" id="extrasModule">
+                <span class="valor" id="extrasModuleValue">{{@extras_value}}</span>
+                <span class="concept" id="extrasModuleConcept">{{@extras_concept}}
+                </span>
+              </div>
+              <div class="sum"></div>
+              <div class="module green" id="techModule">
+                <span class="valor" id="techModuleValue">{{@tech_value}}</span>
+                <span class="concept" id="techModuleConcept">{{@tech_concept}}</span>
+              </div>
+              <div class="equal"></div>
+              <div class="module" id="totalModule">
+                <span class="result" id="totalModuleValue">{{@total_value}}</span>
+              </div>
+            </div>
+          </article>
+
+        </form>
+        
+      </div>
+    </div>  
+
+  </body>
+
+</html>

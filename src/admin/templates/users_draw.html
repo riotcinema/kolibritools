@@ -1,0 +1,117 @@
+<!--
+/**
+ * cosmonautexperience.com
+ *
+ * Website for The Cosmonaut movie.
+ *
+ * NOTE OF LICENSE
+ * Licensed under GNU General Public License version 3.0
+ *
+ * Copyright (c) 2013 Tecnilógica Soluciones Avanzadas.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the GNU Public License v3.0
+ * which accompanies this distribution, and is available at
+ * http://www.gnu.org/licenses/gpl.html
+ *
+ * Contributors:
+ * Tecnilógica Soluciones Avanzadas - initial API and implementation
+ *
+ * @package   cosmonautexperience
+ * @author    Tecnilógica soluciones avanzadas
+ * @copyright Copyright (c) 2003 - 2013, Tecnilógica soluciones avanzadas, S.A. (http://tecnilogica.com/)
+ * @license   http://www.gnu.org/licenses/gpl-3.0.html
+ * @link      http://cosmonautexperience.com
+ *
+ *
+ *
+ * users_draw.html
+ *
+ * Template to get a random user used in a contest to win a prize.
+-->
+
+
+<ul class="breadcrumb">
+  <li><a href="{{@BASE_URL}}/admin/">Home</a> <span class="divider">&gt;</span></li>
+  <li><a href="{{@BASE_URL}}/admin/users/list">Usuarios</a> <span class="divider">&gt;</span></li>
+  <li><a href="{{@BASE_URL}}/admin/users/draw">Sortear</a> <span class="divider">&gt;</span></li>
+  <li class="active">Sorteo entre <span class="badge badge-light">{{@draw_numbers}}</span> usuarios</li>
+</ul>
+
+<div class="alert" id="div_alert">
+	<button type="button" class="close" data-dismiss="alert">&times;</button>
+	<span id="msg">Pulsa el botón generar para obtener la información del usuario ganador.</span>
+</div>
+
+<form method="post" action="" class="form-horizontal">
+
+  <div class="form-actions">
+    <button class="btn btn-primary" type="submit" id="submit">Sortear</button>
+  </div>
+
+	<fieldset>
+	
+	  <div class="control-group">
+	    <label for="firstname" class="control-label">Nombre</label>
+	    <div class="controls">
+	      <input type="text" value="" name="firstname" id="firstname" class="input-xlarge" readonly />
+	    </div>
+	  </div>
+	
+	  <div class="control-group">
+	    <label for="lastname" class="control-label">Apellidos</label>
+	    <div class="controls">
+	      <input type="text" value="" name="lastname" id="lastname" class="input-xlarge" readonly />
+	    </div>
+	  </div>
+	
+	  <div class="control-group">
+	    <label for="note" class="control-label" id="label_note"º>Código</label>
+	    <div class="controls">
+	      <input type="text" value="" name="note" id="note" class="input-xlarge" readonly />
+	    </div>
+	  </div>
+	
+	  <div class="control-group">
+	    <label for="email" class="control-label">Email</label>
+	    <div class="controls">
+	      <input type="text" value="" name="email" id="email" class="input-xlarge" readonly />
+	    </div>
+	  </div>
+
+	</fieldset>
+
+</form>
+
+<script type="text/javascript">
+	$("#submit").click(function(event) {
+		event.preventDefault();
+		$.ajax({
+		    url:        "/admin/users/draw/generate",
+		    cache:      false,
+		    type:       "POST",
+		    dataType:   "json", 
+		    data:       { }, 
+		    beforeSend: function() {
+		    	$(".alert").removeClass("alert-error");
+		    	$("#msg").html("Generando el código aleatorio del ganador.");
+		    },
+		    complete:   function(json_complete) { },
+		    success:    function(json_success) {
+		      if (json_success.result=="ok") {
+		    	  $("#firstname").val(json_success.msg.firstname);
+		    	  $("#lastname").val(json_success.msg.lastname);
+		    	  $("#email").val(json_success.msg.email);
+		    	  $("#note").val(json_success.msg.note);
+	          $("#msg").html("El ganador es ...");
+		      } else {
+		    	  $(".alert").addClass("alert-error");
+		    	  $("#msg").html("Ocurrió un error accediendo a los datos de los usuarios.");
+		      }
+		    }
+		});
+	});
+
+  $(document).ready(function() {
+	  console.log("ready");
+  });
+</script>

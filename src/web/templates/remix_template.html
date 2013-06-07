@@ -1,0 +1,286 @@
+<!--
+/**
+ * cosmonautexperience.com
+ *
+ * Website for The Cosmonaut movie.
+ *
+ * NOTE OF LICENSE
+ * Licensed under GNU General Public License version 3.0
+ *
+ * Copyright (c) 2013 Tecnilógica Soluciones Avanzadas.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the GNU Public License v3.0
+ * which accompanies this distribution, and is available at
+ * http://www.gnu.org/licenses/gpl.html
+ *
+ * Contributors:
+ * Tecnilógica Soluciones Avanzadas - initial API and implementation
+ *
+ * @package   cosmonautexperience
+ * @author    Tecnilógica soluciones avanzadas
+ * @copyright Copyright (c) 2003 - 2013, Tecnilógica soluciones avanzadas, S.A. (http://tecnilogica.com/)
+ * @license   http://www.gnu.org/licenses/gpl-3.0.html
+ * @link      http://cosmonautexperience.com
+ *
+ *
+ *
+ * remix_template.html
+ *
+-->
+
+<section>
+  <div class="wrapper">
+    <div class="wrapper">
+      <section class="remezcla">
+        <div class="subwrapper">
+          <div class="cc"></div>
+          <h2 class="title">{{@dict_rem_remix_movie}}</h2>
+          <p>{{@dict_rem_remix_the_way}}</p>
+          <div class="clearfix"></div>
+        <div> 
+      </section>
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</section>
+
+<section id="press-area" class="download">
+  <div class="subwrapper">
+    <h2 class="title">{{@dict_rem_download_materials}}</h2>
+    <ul>
+
+      <li>
+        <check if="{{@released == TRUE && !empty(@URL_DOWN_REM_DIRECT)}}">
+          <true>
+            <a href="{{@URL_DOWN_REM_DIRECT}}" id="link_to_download_direct" target="_blank">
+              <img src="{{@_PATH}}/images/download-arrow-blue.png" class="download-arrow" alt="download arrow" />
+              <img src="{{@_PATH}}/images/mov-icon-blue.png" alt="mov download" />
+            </a>
+          </true>
+          <false>
+            <a href="#" id="link_to_download_direct" class="unavailable">
+              <img src="{{@_PATH}}/images/mov-icon-blue.png" alt="mov download" />
+            </a>
+          </false>
+        </check>
+        <p>{{@dict_rem_download_direct}}<br>({{@dict_rem_download_direct_2}})</p>
+      </li>
+
+      <exclude>
+      <li>
+        <check if="{{@released == TRUE && !empty(@URL_DOWN_REM_TORRENT)}}">
+          <true>
+            <a href="{{@BASE_URL}}/download/torrent" id="link_to_download_torrent">
+              <check if="{{@released == TRUE}}"><true><img src="{{@_PATH}}/images/download-arrow-blue.png" class="download-arrow" alt="download arrow" /></true></check> 
+              <img src="{{@_PATH}}/images/torrent-icon-blue.png" alt="torrent download" />
+            </a>
+          </true>
+          <false>
+            <a href="#" id="link_to_download_torrent" class="unavailable">
+              <img src="{{@_PATH}}/images/torrent-icon-blue.png" alt="torrent download" />
+            </a>
+          </false>
+        </check>
+        <p>{{@dict_rem_download_torrent}}<br>({{@dict_rem_download_torrent_2}})</p>
+      </li>
+      </exclude>
+
+      <li>
+        <check if="{{@released == TRUE && !empty(@URL_DOWN_REM_MATERIAL)}}">
+          <true>
+            <a href="{{@URL_DOWN_REM_MATERIAL}}" id="link_to_download_material" target="_blank">
+              <img src="{{@_PATH}}/images/download-arrow-blue.png" class="download-arrow" alt="download arrow" />
+              <img src="{{@_PATH}}/images/pdf-icon-blue.png" alt="pdf download" />
+            </a>
+          </true>
+          <false>
+            <a href="#" id="link_to_download_material" class="unavailable">
+              <img src="{{@_PATH}}/images/pdf-icon-blue.png" alt="pdf download" />
+            </a>
+          </false>
+        </check>
+        <p>{{@dict_rem_download_guide}}<br>({{@dict_rem_download_guide_2}})</p>
+      </li>
+
+      <li>
+        <a href="{{@URL_GITHUB}}" target="_blank" alt="{{@dict_rem_download_adapt}}">
+          <img src="{{@_PATH}}/images/download-arrow-blue.png" class="download-arrow" alt="download arrow" />
+          <img src="{{@_PATH}}/images/www-icon-blue.png" alt="www download" />
+        </a>
+        <p>{{@dict_rem_download_adapt}}<br>{{@dict_rem_download_adapt_2}}</p>
+      </li>
+
+    </ul>
+    <div class="clearfix"></div>
+  </div>
+</section>
+
+<div class="remix-bg">
+  <section class="trailer-remix" id="trailer_remix">
+    <div class="wrapper" id="remix_wrapper">
+
+      <div class="subwrapper" id="remix_subwrapper">
+        <section id="section_remix">
+          <div>
+            <h5>{{@dict_rem_week_remix_1}}<a href="{{@URL_VIMEO_SUBMISSIONS}}" target="_blank">{{@dict_rem_week_remix_2}}</a></h5>
+            <div class="play" id="link-play-remix">
+              <span></span>
+            </div>
+            <h2>{{@week_remix["rem_title"]}}</h2>
+            <p>{{@dict_rem_a_film_by}} 
+              <check if="{{!empty(@week_remix['rem_channel_url'])}}">
+                <true><a href="{{@week_remix['rem_channel_url']}}">{{@week_remix["rem_author"]}}</a></true>
+                <false>{{@week_remix["rem_author"]}}</false>
+              </check>
+            </p>
+          </div>
+        </section>
+      </div>
+    </div>
+  </section>
+
+  <section class="posibilidades">
+    <div class="wrapper">
+      <section >
+        
+          <div class="subwrapper">
+          <header>
+            <h2 class="title">{{@dict_rem_this_is_what_you}}</h2>
+            <h3>{{@dict_rem_with_all_content}} <a href="{{@BASE_URL}}/licenses">{{@dict_rem_exceptions}}</a>)</h3>
+          </header>
+          <ul>
+            <li>
+              <img src="{{@_PATH}}/images/ico-compartir.png" alt="compartir">
+              <span class="titulo">
+                {{@dict_rem_share}}
+              </span>
+              <p>{{@dict_rem_share_p1}}<br>{{@dict_rem_share_p2}}</p>
+            </li>
+            <li>
+              <img src="{{@_PATH}}/images/ico-remezclar.png" alt="remezclar">
+              <span class="titulo">{{@dict_rem_remix}}</span>
+              <p>{{@dict_rem_remix_p1}}<br>{{@dict_rem_remix_p2}}<br>{{@dict_rem_remix_p3}}</p>
+            </li>
+          </ul>
+          </div>
+        
+      </section>  
+    </div>    
+  </section>
+
+  <section id="seccion2" class="posibilidades">
+    <div class="wrapper">
+      <div class="subwrapper">
+        <section>
+          <header>
+            <h2 class="title">{{@dict_rem_what_you_respect}}</h2>
+          </header>
+          <ul>
+            <li>
+              <img src="{{@_PATH}}/images/ico-atribucion.png" alt="Atribucion">
+              <span class="titulo">
+                {{@dict_rem_attribution}}
+              </span>
+              <p>
+                {{@dict_rem_attribution_p1}}<br>
+                {{@dict_rem_attribution_p2}}<br>
+                {{@dict_rem_attribution_p3}}<br>
+                
+            </li>
+            <li>
+              <img src="{{@_PATH}}/images/ico-licencia.png" alt="Mantener Licencia">
+              <span class="titulo">{{@dict_rem_license}}</span>
+              <p>
+                {{@dict_rem_license_p1}}<br>
+                {{@dict_rem_license_p2}}<br>
+                {{@dict_rem_license_p3}}<br>
+                {{@dict_rem_license_p4}}
+              </p>
+            </li>
+            <li>
+              <img src="{{@_PATH}}/images/ico-comercial.png" alt="No comercial">
+              <span class="titulo">{{@dict_rem_commercial}}</span>
+              <p>
+                {{@dict_rem_commercial_p1}}<br>
+                {{@dict_rem_commercial_p2}}<br>
+                {{@dict_rem_commercial_p3}}
+              </p>
+            </li>
+          </ul>
+        </section>  
+      </div>
+    </div>    
+  </section>
+
+  <section id="seccion3" class="posibilidades">
+    <div class="wrapper">
+      <section>
+          <div class="subwrapper">
+          <header>
+            <h2 class="title">{{@dict_rem_other_conditions}}</h2>
+          </header>
+          <ul>
+            <li>
+              <img src="{{@_PATH}}/images/ico-derivado.png" alt="{{@dict_rem_derivatives}}">
+              <span class="titulo">{{@dict_rem_derivatives}}</span>
+              <p>
+                {{@dict_rem_derivatives_p1}}<br>
+                {{@dict_rem_derivatives_p2}}<br>
+                {{@dict_rem_derivatives_p3}}
+              </p>
+            </li>
+            <li>
+              <img src="{{@_PATH}}/images/ico-permiso.png" alt="{{@dict_rem_permissions}}">
+              <span class="titulo">{{@dict_rem_permissions}}</span>
+              <p>
+                {{@dict_rem_permissions_p1}}<br>
+                {{@dict_rem_permissions_p2}}<br>
+                {{@dict_rem_permissions_p3}} <a href="{{@BASE_URL}}/licenses">{{@dict_rem_permissions_p4}}</a>
+              </p>
+            </li>
+          </ul>
+        </div>
+      </section>  
+    </div>    
+  </section>
+
+  <section class="download" id="section-submit">
+    <div class="wrapper">
+      <div class="subwrapper">
+        <div class="upload">
+          <h3 class="">
+            {{@dict_rem_upload_p1}}<br>
+            {{@dict_rem_upload_p2}}
+          </h3>
+          <a href="{{@URL_VIMEO_SUBMISSIONS}}" class="btn small bg-black blue adapt" target="_blank">{{@dict_rem_upload}}</a>
+        </div>
+        <div class="clearfix"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sponsor">
+    <div class="wrapper">
+      <section>
+      <div class="subwrapper">
+        <div class="">
+          <h3>{{@dict_rem_help_of}}</h3>
+          <a href="http://archive.org" target="_blank" title="Internet archive">
+            <img src="{{@_PATH}}/images/logo-archive.png" alt="Internet archive">
+          </a>
+         <exclude>
+           <a href="https://mega.co.nz" target="_blank" title="Mega">
+            <img src="{{@_PATH}}/images/MegaLogo.png"  class="right" alt="Mega">
+          </a>
+          </exclude>
+ 
+         </div>
+      </div>
+      </section>
+    </div>  
+  </section>
+</div><!-- END .remix-bg -->
+
+<check if="{{isset(@jump_to)}}">
+  <true><input type="hidden" name="jump_to" id="jump_to" value="{{@jump_to}}" /></true>
+</check>

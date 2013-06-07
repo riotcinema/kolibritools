@@ -1,0 +1,112 @@
+<!--
+/**
+ * cosmonautexperience.com
+ *
+ * Website for The Cosmonaut movie.
+ *
+ * NOTE OF LICENSE
+ * Licensed under GNU General Public License version 3.0
+ *
+ * Copyright (c) 2013 Tecnilógica Soluciones Avanzadas.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the GNU Public License v3.0
+ * which accompanies this distribution, and is available at
+ * http://www.gnu.org/licenses/gpl.html
+ *
+ * Contributors:
+ * Tecnilógica Soluciones Avanzadas - initial API and implementation
+ *
+ * @package   cosmonautexperience
+ * @author    Tecnilógica soluciones avanzadas
+ * @copyright Copyright (c) 2003 - 2013, Tecnilógica soluciones avanzadas, S.A. (http://tecnilogica.com/)
+ * @license   http://www.gnu.org/licenses/gpl-3.0.html
+ * @link      http://cosmonautexperience.com
+ *
+ *
+ *
+ * comments_list.html
+ *
+ * Template to display a tabulated list of video comments.
+-->
+
+<ul class="breadcrumb">
+  <li><a href="{{@BASE_URL}}/admin/">Home</a> <span class="divider">&gt;</span></li>
+  <li class="active">Comentarios <span class="badge badge-light">{{count(@comments)}}</span></li>
+  <li class="pull-right">
+    <a href="{{@BASE_URL}}/admin/comments/add" class="btn btn-primary pull-right">
+      <i class="icon-plus icon-white"></i> Añadir comentario
+    </a>
+  </li>
+</ul>
+
+<?php {{print_r($comments);}}?>
+
+
+<include href="pagination_template.html"/>
+
+<table id="commentsTable" class="table table-striped tablesorter">
+
+  <thead>
+    <tr>
+      <th>Usuario</th>
+      <th>Fecha</th>
+      <th>Comentario</th>
+      <th width="70px">&nbsp;</th>
+    </tr>
+  </thead>
+
+  <tbody>
+  <check if="isset($comments)">
+  <repeat group="{{@comments}}" key="{{@key}}" value="{{@comment}}">
+    <tr>
+      <td><strong>VIDEO:</strong>&nbsp;<a href="{{@BASE_URL}}/admin/videos/edit/{{@comment['com_fk_vid_id']}}">{{@comment["vid_title_en"]}}</a></td>
+      <td colspan="5">&nbsp;</td>
+    </tr>
+
+    <tr>
+      <td>
+        <check if="array_key_exists('email', @comment)">
+          <true><a href="{{@BASE_URL}}/admin/users/edit/{{@comment['id_customer']}}">{{@comment["email"]}}</a></true>
+        </check>
+      </td>
+      <td>{{@comment["com_date"]}}</td>
+      <td><strong>P:</strong> {{@comment["com_comment"]}}</td>
+      <td align="center">
+        <a href="{{@BASE_URL}}/admin/comments/edit/{{@comment['com_id']}}"><i class="icon-pencil"></i></a>
+        &nbsp;
+        <a  onclick="if(!confirm('¿Seguro que deseas eliminar el comentario {{@comment['com_comment']}}?')) return false;"
+            href="{{@BASE_URL}}/admin/comments/delete/{{@comment['com_id']}}">
+          <i class="icon-trash"></i>
+        </a>
+        <check if="{{isset(@comment['com_response'])}}">
+          <false>
+            <a href="{{@BASE_URL}}/admin/comments/{{@comment['com_id']}}/response/add"><i class="icon-share-alt"></i></a>
+          </false>
+        </check>
+      </td>
+    </tr>
+
+    <check if="{{isset(@comment->com_response)}}">
+    <true>
+    <tr>
+      <td><a href="{{@BASE_URL}}/admin/admins/edit/{{@comment['com_response']['usu_id']}}">{{@comment['com_response']['usu_nick']}}</a></td>
+      <td>{{@comment['com_response']['res_date']}}</td>
+      <td><strong>R:</strong> {{@comment['com_response']['res_comment']}}</td>
+      <td align="center">
+        <a href="{{@BASE_URL}}/admin/comments/{{@comment['com_id']}}/response/edit/{{@comment['com_response']['res_id']}}"><i class="icon-pencil"></i></a>
+        &nbsp;
+        <a  onclick="if(!confirm('¿Seguro que deseas eliminar el comentario {{@comment['com_comment']}}?')) return false;"
+            href="{{@BASE_URL}}/admin/comments/{{@comment['com_id']}}/response/delete/{{@comment['com_response']['res_id']}}">
+          <i class="icon-trash"></i>
+        </a>
+      </td>
+    </tr>
+    </true>
+    </check>
+
+  </repeat>
+  </tbody>
+
+</table>
+
+<include href="pagination_template.html"/>

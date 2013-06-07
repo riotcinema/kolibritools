@@ -1,0 +1,117 @@
+<!--
+/**
+ * cosmonautexperience.com
+ *
+ * Website for The Cosmonaut movie.
+ *
+ * NOTE OF LICENSE
+ * Licensed under GNU General Public License version 3.0
+ *
+ * Copyright (c) 2013 Tecnilógica Soluciones Avanzadas.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the GNU Public License v3.0
+ * which accompanies this distribution, and is available at
+ * http://www.gnu.org/licenses/gpl.html
+ *
+ * Contributors:
+ * Tecnilógica Soluciones Avanzadas - initial API and implementation
+ *
+ * @package   cosmonautexperience
+ * @author    Tecnilógica soluciones avanzadas
+ * @copyright Copyright (c) 2003 - 2013, Tecnilógica soluciones avanzadas, S.A. (http://tecnilogica.com/)
+ * @license   http://www.gnu.org/licenses/gpl-3.0.html
+ * @link      http://cosmonautexperience.com
+ *
+ *
+ *
+ * about_template.html
+ *
+ * Template of /about request. Displays basic information, links to some press
+ * elements, info about team members and a video about the project.
+-->
+
+<section id="video">
+
+  <div class="wrapper" id="video_wrapper" style="background: url('{{@_PATH}}images/about_background.png')">
+    <h2></h2>
+    <h3>{{@dict_abo_4_years_working}}</h3>
+    <p>{{@dict_abo_with_the_help_of_1}}<br/>{{@dict_abo_with_the_help_of_2}}<br/>{{@dict_abo_with_the_help_of_3}}</p>
+    <a href="#" class="btn small bg-black white" id="link-learn-more">{{@dict_abo_learn_more}}</a>
+  </div>
+
+</section>
+
+<section id="features">
+  <div class="wrapper">
+    <div class="subwrapper">
+
+      <section id="three-principles">
+        <h2 class="title">{{@dict_abo_impossible}}</h2>
+        <p>{{@dict_abo_impossible_p1}}</p>
+        <p>{{@dict_abo_impossible_p2}}</p>
+        <p>{{@dict_abo_impossible_p3}}</p>
+      </section>
+
+      <section id="behind-the-scenes">
+        <img src="{{@LANGUAGE=='es' ? @_PATH.'/images/about_asset_es.png' : @_PATH.'/images/about_asset_en.png'}}" alt="{{@dict_abo_timeline}}" />
+        <div>
+          <h2 class="title">{{@dict_abo_behind_scenes}}</h2>
+          <h4>{{@dict_abo_behind_p1}}</h4>
+          <p>{{@dict_abo_behind_p2}}</p>
+          <a href="{{@BASE_URL}}/behind_the_scenes" class="btn small blue bg-black">{{@dict_com_behind_scenes}}</a>
+        </div>
+      </section>
+
+      <div class="clearfix"></div>
+
+      <section id="meet-the-team">
+        <h2 class="title">{{ @dict_abo_meet_the_team }}</h2>
+        <h4>{{@dict_abo_meet_the_team_p}}</h4>
+
+        <ul>
+          <li>
+            <img src="{{@_PATH}}/images/nicolas-alcala.jpg" alt="Nicolás Alcalá">
+            <h5>Nicolás Alcalá</h5>
+            <p>{{@dict_abo_team_nico_1}}<br/>{{@dict_abo_team_nico_2}}</p>
+            <a href="https://www.facebook.com/NicoAlcala" class="icon-facebook icon-top" target="_blank"></a>
+            <a href="http://twitter.com/cosmonauta" class="icon-twitter icon-bottom" target="_blank"></a>
+          </li>
+          <li>
+            <img src="{{@_PATH}}/images/carola-rodriguez.jpg" alt="Carola Rodriguez">
+            <h5>Carola Rodriguez</h5>
+            <p>{{@dict_abo_team_carola}}</p>
+            <a href="http://twitter.com/Carola_Rodrgz" class="icon-twitter icon-top" target="_blank"></a>
+            <a href="http://www.alwaysblametheproducer.com/" class="icon-rss icon-bottom" target="_blank"></a>
+          </li>
+          <li>
+            <img src="{{@_PATH}}/images/bruno-teixidor.jpg" alt="Bruno Teixidor">
+            <h5>Bruno Teixidor</h5>
+            <p>{{@dict_abo_team_bruno_1}}<br/>{{@dict_abo_team_bruno_2}}</p>
+            <a href="http://twitter.com/bruteix" target="_blank" class="icon-twitter icon-top"></a>
+            <a href="http://flavors.me/oyebruno" target="_blank" class="icon-rss icon-bottom"></a>
+          </li>
+        </ul>
+
+        <div class="clearfix"></div>
+
+        <a href="{{@BASE_URL}}/credits" class="btn small blue bg-black">
+          {{@dict_abo_meet_all_the_people}}
+        </a>
+
+        <div class="center-link">
+          <a href="{{@lang_url_blog_thanks}}" target="_blank" title="{{@dict_abo_or_check_our_special}}">{{@dict_abo_or_check_our_special}}</a>
+        </div>
+
+      </section>
+
+    </div>
+  </div>
+</section>
+
+
+<include if="{{isset(@press_template) }}" href="{{ @press_template}}" />
+
+
+<check if="{{isset(@jump_to)}}">
+  <true><input type="hidden" name="jump_to" id="jump_to" value="{{@jump_to}}" /></true>
+</check>

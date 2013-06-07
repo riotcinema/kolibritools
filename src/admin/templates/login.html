@@ -1,0 +1,57 @@
+<!--
+/**
+ * cosmonautexperience.com
+ *
+ * Website for The Cosmonaut movie.
+ *
+ * NOTE OF LICENSE
+ * Licensed under GNU General Public License version 3.0
+ *
+ * Copyright (c) 2013 Tecnilógica Soluciones Avanzadas.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the GNU Public License v3.0
+ * which accompanies this distribution, and is available at
+ * http://www.gnu.org/licenses/gpl.html
+ *
+ * Contributors:
+ * Tecnilógica Soluciones Avanzadas - initial API and implementation
+ *
+ * @package   cosmonautexperience
+ * @author    Tecnilógica soluciones avanzadas
+ * @copyright Copyright (c) 2003 - 2013, Tecnilógica soluciones avanzadas, S.A. (http://tecnilogica.com/)
+ * @license   http://www.gnu.org/licenses/gpl-3.0.html
+ * @link      http://cosmonautexperience.com
+ *
+ *
+ *
+ * login.html
+ *
+ * Login template to get access to the admin module.
+-->
+
+<div class="container">
+  <div class="row">
+    <div class="span4 offset4 well">
+      <img src="/admin/images/logo.jpg" alt="" class="centered" />
+      <h3 class="centered">Gestión de contenidos</h3>
+    
+      <check if="{{isset(@loginerror)}}">
+        <div class="alert alert-error">
+          <i class="icon-warning-sign"></i> Error de usuario / contraseña
+        </div>
+      </check>
+    
+      <form id="f_general" name="f_general" method="post" action="login">
+        <fieldset>
+          <label for="usuario">Usuario
+            <input type="text"  name="user" id="user" class="input-xlarge"/>
+          </label> 
+          <label for="password">Contraseña
+            <input type="password" name="password" id="password" autocomplete="off"  class="input-xlarge"/>
+          </label>
+          <button type="submit" class="btn btn-primary pull-right">Entrar</button>
+        </fieldset>
+      </form>
+    </div>
+  </div>
+</div>

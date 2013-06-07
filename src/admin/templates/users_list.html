@@ -1,0 +1,116 @@
+<!--
+/**
+ * cosmonautexperience.com
+ *
+ * Website for The Cosmonaut movie.
+ *
+ * NOTE OF LICENSE
+ * Licensed under GNU General Public License version 3.0
+ *
+ * Copyright (c) 2013 Tecnilógica Soluciones Avanzadas.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the GNU Public License v3.0
+ * which accompanies this distribution, and is available at
+ * http://www.gnu.org/licenses/gpl.html
+ *
+ * Contributors:
+ * Tecnilógica Soluciones Avanzadas - initial API and implementation
+ *
+ * @package   cosmonautexperience
+ * @author    Tecnilógica soluciones avanzadas
+ * @copyright Copyright (c) 2003 - 2013, Tecnilógica soluciones avanzadas, S.A. (http://tecnilogica.com/)
+ * @license   http://www.gnu.org/licenses/gpl-3.0.html
+ * @link      http://cosmonautexperience.com
+ *
+ *
+ *
+ * users_list.html
+ *
+ * Template to list a paginated list of customers.
+-->
+
+<ul class="breadcrumb">
+  <li>
+    <a href="{{@BASE_URL}}/admin/">Home</a> <span class="divider">&gt;</span>
+  </li>
+  <li class="active">Usuarios <span class="badge badge-light">{{count(@users)}}</span></li>
+  <li class="pull-right">
+    <a href="{{@BASE_URL}}/admin/users/add" class="btn btn-primary pull-right">
+      <i class="icon-plus icon-white"></i> Añadir usuario
+    </a>
+  </li>
+</ul>
+
+<include href="pagination_template.html"/>
+
+<table id="usersTable" class="table table-striped tablesorter">
+
+  <thead>
+    <tr>
+      <th>Nombre</th>
+      <th>E-Mail</th>
+      <th>Código</th>
+      <th>Activo</th>
+      <th>Borrado</th>
+      <th>&nbsp;</th>
+    </tr>
+  </thead>
+
+  <tbody>
+  <check if="isset($users)">
+  <repeat group="{{@users}}" key="{{@key}}" value="{{@user}}">
+    <tr>
+      <td>
+        <a href="{{@BASE_URL}}/admin/users/edit/{{@user['id_customer']}}">
+          <check if="{{isset(@user['firstname']) && isset(@user['lastname'])}}">
+            <true>{{@user['firstname']}} {{@user['lastname']}}</true>
+            <false><i>{{@user['email']}}</i></false>
+          </check>
+        </a>
+      </td>
+      <td>{{@user['email']}}</td>
+      <td>{{@user['note']}}</td>
+      <td><input disabled="" type="checkbox" {{@user['active']==1 ? "checked" : ""}}/></td>
+      <td><input disabled="" type="checkbox" {{@user['deleted']==1 ? "checked" : ""}}/></td>
+      <td align="center">
+        <a href="mailto:{{@user['email']}}"><i class="icon-envelope"></i></a>
+        &nbsp;
+        <a href="{{@BASE_URL}}/admin/users/edit/{{@user['id_customer']}}"><i class="icon-pencil"></i></a>
+        &nbsp;
+        <check if="{{@user['deleted']!=1}}">
+        <true>
+        <a  onclick="if(!confirm('¿Seguro que deseas eliminar el usuario?')) return false;"
+            href="{{@BASE_URL}}/admin/users/delete/{{@user['id_customer']}}">
+          <i class="icon-trash"></i>
+        </a>
+      </true>
+      <false>
+        <a  onclick="if(!confirm('¿Seguro que deseas recuperar el usuario?')) return false;"
+            href="{{@BASE_URL}}/admin/users/recover/{{@user['id_customer']}}">
+          <i class="icon-refresh"></i>
+        </a>
+      </false>
+      </check>
+      </td>
+    </tr>
+  </repeat>
+  </check>
+  </tbody>
+</table>
+
+<include href="pagination_template.html"/>
+
+<script type="text/javascript">
+
+  $(document).ready(function() {
+    $("#usersTable").tablesorter({
+      headers: {
+        1: { sorter: "spText" },
+        2: { sorter: "spText" },
+        3: { sorter: "spText" },
+        4: { sorter: "spText" }
+      }
+    });
+  });
+
+</script>

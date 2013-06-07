@@ -1,0 +1,93 @@
+<!--
+/**
+ * cosmonautexperience.com
+ *
+ * Website for The Cosmonaut movie.
+ *
+ * NOTE OF LICENSE
+ * Licensed under GNU General Public License version 3.0
+ *
+ * Copyright (c) 2013 Tecnilógica Soluciones Avanzadas.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the GNU Public License v3.0
+ * which accompanies this distribution, and is available at
+ * http://www.gnu.org/licenses/gpl.html
+ *
+ * Contributors:
+ * Tecnilógica Soluciones Avanzadas - initial API and implementation
+ *
+ * @package   cosmonautexperience
+ * @author    Tecnilógica soluciones avanzadas
+ * @copyright Copyright (c) 2003 - 2013, Tecnilógica soluciones avanzadas, S.A. (http://tecnilogica.com/)
+ * @license   http://www.gnu.org/licenses/gpl-3.0.html
+ * @link      http://cosmonautexperience.com
+ *
+ *
+ *
+ * main_template.html
+ *
+ * Global template for the admin module.
+-->
+
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8">
+    <title>El Cosmonauta :: ADMIN</title>
+    <!-- Icons -->
+    <link rel="shortcut icon" type="image/ico" href="favicon.ico">
+    <link rel="shortcut icon" type="image/ico" href="favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="{{@BASE_URL}}/admin/css/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="{{@BASE_URL}}/admin/css/extra.css"  />
+    <link rel="stylesheet" type="text/css" href="http://code.jquery.com/ui/1.10.1/themes/base/jquery-ui.css" />
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.2/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="{{@BASE_URL}}/admin/js/jquery.tablesorter.min.js"></script>
+    <script type="text/javascript" src="{{@BASE_URL}}/admin/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="{{@BASE_URL}}/admin/js/jquery-ui-1.10.1.custom/js/jquery-ui-timepicker-addon.js"></script>
+
+  </head>
+
+  <body style="padding-top:60px;">
+
+    <div class="navbar navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="brand" href="{{@BASE_URL}}/admin"><img src="/admin/images/logo.jpg" alt="" /></a>
+          <ul class="nav  pull-right">
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                <i class="icon-user icon-white"></i> {{@SESSION.admin_login}} <b class="caret"></b>
+              </a>
+              <ul class="dropdown-menu">
+                <li><a href="{{@BASE_URL}}/admin/logout" class="salir">Salir</a></li>
+              </ul>
+           </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="row">
+        <div class="span12">
+          <div class="row">
+            <div class="span2">
+              <include href="main_menu.html" />
+            </div>
+            <div class="span10">
+              <include if="{{ isset(@main_content) }}" href="{{ @main_content }}" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </body>
+
+  <script type="text/javascript">
+    $('.dropdown-toggle').dropdown();
+  </script>
+
+</html>

@@ -1,0 +1,215 @@
+<!--
+/**
+ * cosmonautexperience.com
+ *
+ * Website for The Cosmonaut movie.
+ *
+ * NOTE OF LICENSE
+ * Licensed under GNU General Public License version 3.0
+ *
+ * Copyright (c) 2013 Tecnilógica Soluciones Avanzadas.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the GNU Public License v3.0
+ * which accompanies this distribution, and is available at
+ * http://www.gnu.org/licenses/gpl.html
+ *
+ * Contributors:
+ * Tecnilógica Soluciones Avanzadas - initial API and implementation
+ *
+ * @package   cosmonautexperience
+ * @author    Tecnilógica soluciones avanzadas
+ * @copyright Copyright (c) 2003 - 2013, Tecnilógica soluciones avanzadas, S.A. (http://tecnilogica.com/)
+ * @license   http://www.gnu.org/licenses/gpl-3.0.html
+ * @link      http://cosmonautexperience.com
+ *
+ *
+ *
+ * universe_template.html
+ *
+-->
+
+<include if="{{ isset(@vid_detail) }}" href="{{ @vid_detail }}" />
+
+<section id="parallax">
+
+  <div class="wrapper" id="parallax-viewport">
+
+    <div id="title">
+      <h1 class="title">{{@dict_uni_the_beginning}}</h1>
+      <p>{{@dict_uni_the_beginning_p}}</p>
+    </div>
+
+
+    <section class="bg1" id="the-good-old-days">
+      <div class="subtitle">
+        <h2 class="title">{{@dict_uni_the_good_old_days}}</h2>
+        <p>{{@dict_uni_the_good_old_days_p}}</p>
+      </div>
+      <repeat group="{{@i_bg1}}" value="{{@index}}">
+        <article class="video {{@parallax_videos[@index]['vid_published'] == 1 ? 'video-thumbnail' : 'desaturate-img'}}" id="{{@index}}">
+          <h3 class="{{@parallax_videos[@index]['vid_protected'] == 1 ? 'border' : NULL}}">{{@parallax_videos[@index]['alt_title']}}</h3>
+          <a href="#" class="disable-bg"></a>
+          <img alt="{{@parallax_videos[@index]['vid_title']}}" src="{{@_PATH}}/images/covers/{{@parallax_videos[@index]['vid_thumbnail']}}">
+          <div class="inner-text play">
+            <h2 class="title">{{@parallax_videos[@index]['vid_title']}}</h2>
+            <p>{{@parallax_videos[@index]['vid_synopsis_short_'.strtolower(@LANGUAGE)]}}</p>
+            <a href="#" class="btn-play"></a>
+          </div>
+        </article>
+      </repeat>
+    </section>
+
+
+    <section class="bg2" id="the-lost-cosmonauts">
+      <div class="subtitle">
+        <h2 class="title">{{@dict_uni_the_lost_cosmonauts}}</h2>
+        <p>{{@dict_uni_the_lost_cosmonauts_p}}</p>
+      </div>
+      <repeat group="{{@i_bg2}}" value="{{@index}}">
+        <article class="video {{@parallax_videos[@index]['vid_published'] == 1 ? 'video-thumbnail' : 'desaturate-img'}}" id="{{@index}}">
+          <h3 class="{{@parallax_videos[@index]['vid_protected'] == 1 ? 'border' : NULL}}">{{@parallax_videos[@index]['alt_title']}}</h3>
+          <a href="#" class="disable-bg"></a>
+          <img alt="{{@parallax_videos[@index]['vid_title']}}" src="{{@_PATH}}/images/covers/{{@parallax_videos[@index]['vid_thumbnail']}}">
+          <div class="inner-text play">
+            <h2 class="title">{{@parallax_videos[@index]['vid_title']}}</h2>
+            <p>{{@parallax_videos[@index]['vid_synopsis_short_'.strtolower(@LANGUAGE)]}}</p>
+            <a href="#" class="btn-play"></a>
+          </div>
+        </article>
+      </repeat>
+    </section>
+
+
+
+    <section class="bg3" id="star-city">
+      <repeat group="{{@i_bg3}}" value="{{@index}}">
+        <article class="video {{@parallax_videos[@index]['vid_published'] == 1 ? 'video-thumbnail' : 'desaturate-img'}}" id="{{@index}}">
+          <h3 class="{{@parallax_videos[@index]['vid_protected'] == 1 ? 'border' : NULL}}">{{@parallax_videos[@index]['alt_title']}}</h3>
+          <a href="#" class="disable-bg"></a>
+          <img alt="{{@parallax_videos[@index]['vid_title']}}" src="{{@_PATH}}/images/covers/{{@parallax_videos[@index]['vid_thumbnail']}}">
+          <div class="inner-text play">
+            <h2 class="title">{{@parallax_videos[@index]['vid_title']}}</h2>
+            <p>{{@parallax_videos[@index]['vid_synopsis_short_'.strtolower(@LANGUAGE)]}}</p>
+            <a href="#" class="btn-play"></a>
+          </div>
+        </article>
+      </repeat>
+    </section>
+
+
+
+
+    <section class="bg4" id="the-cosmonaut">
+      <repeat group="{{@i_bg4}}" value="{{@index}}">
+        <article class="video {{@parallax_videos[@index]['vid_published'] == 1 ? 'video-thumbnail' : 'desaturate-img'}}" id="{{@index}}">
+          <h3 class="{{@parallax_videos[@index]['vid_protected'] == 1 ? 'border' : NULL}}">{{@parallax_videos[@index]['alt_title']}}</h3>
+          <a href="#" class="disable-bg"></a>
+          <img alt="{{@parallax_videos[@index]['vid_title']}}" src="{{@_PATH}}/images/covers/{{@parallax_videos[@index]['vid_thumbnail']}}">
+          <div class="inner-text play">
+            <h2 class="title">{{@parallax_videos[@index]['vid_title']}}</h2>
+            <p>{{@parallax_videos[@index]['vid_synopsis_short_'.strtolower(@LANGUAGE)]}}</p>
+            <a href="#" class="btn-play"></a>
+          </div>
+        </article>
+      </repeat>
+      <div class="subtitle">
+        <h2 class="title">{{@dict_uni_the_cosmonaut}}</h2>
+        <p>{{@dict_uni_the_cosmonaut_p}}</p>
+      </div>
+      <article class="video" id="big-cosmonaut">
+        <div class="paypal">
+          <include if="{{isset(@the_movie) }}" href="{{@the_movie}}" />
+        </div>
+      </article>
+    </section>
+
+
+
+    <section class="bg5" id="moon-warm-up">
+      <div class="subtitle">
+        <h2 class="title">{{@dict_uni_moon_warm_up}}</h2>
+        <p>{{@dict_uni_moon_warm_up_p}}</p>
+      </div>
+      <repeat group="{{@i_bg5}}" value="{{@index}}">
+        <article class="video {{@parallax_videos[@index]['vid_published'] == 1 ? 'video-thumbnail' : 'desaturate-img'}}" id="{{@index}}">
+          <h3 class="{{@parallax_videos[@index]['vid_protected'] == 1 ? 'border' : NULL}}">{{@parallax_videos[@index]['alt_title']}}</h3>
+          <a href="#" class="disable-bg"></a>
+          <img alt="{{@parallax_videos[@index]['vid_title']}}" src="{{@_PATH}}/images/covers/{{@parallax_videos[@index]['vid_thumbnail']}}">
+          <div class="inner-text play">
+            <h2 class="title">{{@parallax_videos[@index]['vid_title']}}</h2>
+            <p>{{@parallax_videos[@index]['vid_synopsis_short_'.strtolower(@LANGUAGE)]}}</p>
+            <a href="#" class="btn-play"></a>
+          </div>
+        </article>
+      </repeat>
+    </section>
+
+
+
+    <section class="bg6" id="v-o-i-d">
+      <div class="subtitle first">
+        <h2 class="title">{{@dict_uni_the_journey}}</h2>
+        <p>{{@dict_uni_the_journey_p}}</p>
+      </div>
+      <div class="subtitle">
+        <h2 class="title">{{@dict_uni_v_o_i_d}}</h2>
+        <p>{{@dict_uni_v_o_i_d_p_1}}<br/>{{@dict_uni_v_o_i_d_p_2}}</p>
+      </div>
+      <repeat group="{{@i_bg6}}" value="{{@index}}">
+        <article class="video {{@parallax_videos[@index]['vid_published'] == 1 ? 'video-thumbnail' : 'desaturate-img'}}" id="{{@index}}">
+          <h3 class="{{@parallax_videos[@index]['vid_protected'] == 1 ? 'border' : NULL}}">{{@parallax_videos[@index]['alt_title']}}</h3>
+          <a href="#" class="disable-bg"></a>
+          <img alt="{{@parallax_videos[@index]['vid_title']}}" src="{{@_PATH}}/images/covers/{{@parallax_videos[@index]['vid_thumbnail']}}">
+          <div class="inner-text play">
+            <h2 class="title">{{@parallax_videos[@index]['vid_title']}}</h2>
+            <p>{{@parallax_videos[@index]['vid_synopsis_short_'.strtolower(@LANGUAGE)]}}</p>
+            <a href="#" class="btn-play"></a>
+          </div>
+        </article>
+      </repeat>
+    </section>
+
+
+
+
+    <section class="bg7" id="the-moon-files">
+      <div class="subtitle first">
+        <h2 class="title">{{@dict_uni_the_moon_files}}</h2>
+        <p>{{@dict_uni_the_moon_files_p}}</p>
+      </div>
+      <div class="subtitle">
+        <h2 class="title">{{@dict_uni_the_true_end}}</h2>
+        <p>...</p>
+      </div>
+
+      <article class="video little" id="cosmo20">
+        <img alt="{{@dict_com_the_book}}" src="{{@_PATH}}/images/covers/thumb_the_book.png">
+        <check if="{{SessionManager::is_logged() && !empty(@URL_BOOK)}}">
+          <true><a href="{{@@URL_BOOK}}" alt="{{@dict_com_the_book}}" target="_blank"><h3 class="border">{{@dict_com_the_book}}</h3></a></true>
+          <false><h3 class="border">{{@dict_com_the_book}}</h3></false>
+        </check>
+      </article>
+
+      <repeat group="{{@i_bg7}}" value="{{@index}}">
+        <article class="video {{@parallax_videos[@index]['vid_published'] == 1 ? 'video-thumbnail' : 'desaturate-img'}}" id="{{@index}}">
+          <h3 class="{{@parallax_videos[@index]['vid_protected'] == 1 ? 'border' : NULL}}">{{@parallax_videos[@index]['alt_title']}}</h3>
+          <a href="#" class="disable-bg"></a>
+          <img alt="{{@parallax_videos[@index]['vid_title']}}" src="{{@_PATH}}/images/covers/{{@parallax_videos[@index]['vid_thumbnail']}}">
+          <div class="inner-text play">
+            <h2 class="title">{{@parallax_videos[@index]['vid_title']}}</h2>
+            <p>{{@parallax_videos[@index]['vid_synopsis_short_'.strtolower(@LANGUAGE)]}}</p>
+            <a href="#" class="btn-play"></a>
+          </div>
+        </article>
+      </repeat>
+
+    </section>
+      
+  </div>
+    
+</section>
+
+
+<check if="{{isset(@jump_to)}}"><true><input type="hidden" name="jump_to" id="jump_to" value="{{@jump_to}}" /></true></check>
+
+<check if="{{isset(@auto_open)}}"><true><input type="hidden" name="auto_open" id="auto_open" value="{{@auto_open}}" /></true></check>

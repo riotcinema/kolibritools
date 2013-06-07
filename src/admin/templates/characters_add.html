@@ -1,0 +1,74 @@
+<!--
+/**
+ * cosmonautexperience.com
+ *
+ * Website for The Cosmonaut movie.
+ *
+ * NOTE OF LICENSE
+ * Licensed under GNU General Public License version 3.0
+ *
+ * Copyright (c) 2013 Tecnilógica Soluciones Avanzadas.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the GNU Public License v3.0
+ * which accompanies this distribution, and is available at
+ * http://www.gnu.org/licenses/gpl.html
+ *
+ * Contributors:
+ * Tecnilógica Soluciones Avanzadas - initial API and implementation
+ *
+ * @package   cosmonautexperience
+ * @author    Tecnilógica soluciones avanzadas
+ * @copyright Copyright (c) 2003 - 2013, Tecnilógica soluciones avanzadas, S.A. (http://tecnilogica.com/)
+ * @license   http://www.gnu.org/licenses/gpl-3.0.html
+ * @link      http://cosmonautexperience.com
+ *
+ *
+ *
+ * characters_add.html
+ *
+ * Template to edit/create a new Nayik character.
+-->
+
+<ul class="breadcrumb">
+  <li><a href="{{@BASE_URL}}/admin/">Home</a> <span class="divider">&gt;</span></li>
+  <li><a href="{{@BASE_URL}}/admin/characters/list">Personajes</a> <span class="divider">&gt;</span></li>
+  <li class="active">Añadir / Editar</li>
+</ul>
+
+<include href="error_template.html"/>
+
+<form method="post" action="{{@BASE_URL}}/admin/characters/update" id="f_edit" enctype="multipart/form-data" class="form-horizontal">
+
+  <input type="hidden" value="{{isset(@POST.cha_id) ? @POST.cha_id : NULL}}" name="cha_id"/>
+
+  <fieldset>
+
+    <div class="control-group">
+      <label for="cha_name" class="control-label">Nombre</label>
+      <div class="controls">
+        <input type="text" value="{{isset(@POST.cha_name) ? @POST.cha_name : NULL}}" name="cha_name" class="input-xlarge"/>
+      </div>
+    </div>
+
+    <div class="control-group">
+      <label for="cha_fullname" class="control-label">Nombre completo</label>
+      <div class="controls">
+        <input type="text" value="{{isset(@POST.cha_fullname) ? @POST.cha_fullname : NULL}}" name="cha_fullname" class="input-xlarge"/>
+      </div>
+    </div>
+
+    <div class="control-group">
+      <label for="cha_avatar" class="control-label">Avatar</label>
+      <div class="controls">
+        <input type="text" value="{{isset(@POST.cha_avatar) ? @POST.cha_avatar : NULL}}" name="cha_avatar" class="input-xlarge"/>
+      </div>
+    </div>
+
+  </fieldset>
+
+  <div class="form-actions">
+    <a class="btn" href="{{@BASE_URL}}/admin/characters/list">Cancelar</a>
+    <button class="btn btn-primary" type="submit" id="submit">Modificar</button>
+  </div>
+
+</form>

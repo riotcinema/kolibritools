@@ -1,0 +1,135 @@
+; cosmonautexperience.com
+;
+; Website for The Cosmonaut movie.
+;
+; NOTE OF LICENSE
+; Licensed under GNU General Public License version 3.0
+;
+; Copyright (c) 2013 Tecnilógica Soluciones Avanzadas.
+; All rights reserved. This program and the accompanying materials
+; are made available under the terms of the GNU Public License v3.0
+; which accompanies this distribution, and is available at
+; http://www.gnu.org/licenses/gpl.html
+;
+; Contributors:
+; Tecnilógica Soluciones Avanzadas - initial API and implementation
+;
+; @package   cosmonautexperience
+; @author    Tecnilógica soluciones avanzadas
+; @copyright Copyright (c) 2003 - 2013, Tecnilógica soluciones avanzadas, S.A. (http://tecnilogica.com/)
+; @license   http://www.gnu.org/licenses/gpl-3.0.html
+; @link      http://cosmonautexperience.com
+;
+; constants
+;
+; This is a sample configuration file. Empty values should be filled and file
+; should be renamed to constants.cfg
+
+[globals]
+
+; LANGUAGES
+DEFAULT_LANG   = "EN"
+AVAILABLE_LANG = "EN","ES"
+
+
+; MAILS
+MAIL_NO_REPLY         = "no-reply@elcosmonauta.es"
+MAIL_COMMENT_SUBJECT  = "[ The Cosmonaut] Nuevo comentario"
+MAIL_DEMAND_SUBJECT   = "[ The Cosmonaut] Formulario web :: Solicitar evento"
+MAIL_ORGANIZE_SUBJECT = "[ The Cosmonaut] Formulario web :: Organizar evento"
+
+
+; EXTERNAL URLs
+URL_BLOG_EN           = "http://www.thecosmonaut.org/blog/"
+URL_BLOG_ES           = "http://www.elcosmonauta.es/blog/"
+URL_BLOG_THANKS_EN    = "http://www.thecosmonaut.org/blog/?p=713"
+URL_BLOG_THANKS_ES    = "http://www.elcosmonauta.es/blog/?p=1174"
+URL_CC_EN             = "http://creativecommons.org/licenses/by-nc-sa/3.0/"
+URL_CC_ES             = "http://creativecommons.org/licenses/by-nc-sa/3.0/es/"
+URL_FACEBOOK_EN       = "https://www.facebook.com/cosmonaut.movie"
+URL_FACEBOOK_ES       = "https://www.facebook.com/cosmonauta.pelicula"
+URL_FLICKR_RIOT       = "http://flickr.com/riotcinema/sets"
+URL_GITHUB            = "http://kolibritools.com/"
+URL_GUIDE_EN          = "http://www.thecosmonaut.org/screening_guide_eng.pdf"
+URL_GUIDE_ES          = "http://www.thecosmonaut.org/screening_guide_esp.pdf"
+URL_OLDSITE_EN        = "http://classic.thecosmonaut.org"
+URL_OLDSITE_ES        = "http://classic.elcosmonauta.es"
+URL_PANORAMA_EN       = "http://classic.thecosmonaut.org/#dossier"
+URL_PANORAMA_ES       = "http://classic.elcosmonauta.es/#dossier"
+URL_RSS_EN            = "http://www.thecosmonaut.org/blog/?feed=rss2"
+URL_RSS_ES            = "http://www.elcosmonauta.es/blog/?feed=rss2"
+URL_SCRIPTS_EN        = "http://classic.thecosmonaut.org/#guiones"
+URL_SCRIPTS_ES        = "http://classic.elcosmonauta.es/#guiones"
+URL_TRAILER_EN        = "http://trailer.thecosmonaut.org"
+URL_TRAILER_ES        = "http://trailer.elcosmonauta.es"
+URL_TWITTER_EN        = "https://twitter.com/cosmonaut_movie"
+URL_TWITTER_ES        = "https://twitter.com/el_cosmonauta"
+URL_VIMEO_RIOT        = "http://vimeo.com/riotcinema"
+URL_VIMEO_SUBMISSIONS = "http://vimeo.com/groups/cosmoremix"
+URL_VIMEO_SUBMIT      = "http://vimeo.com/groups/cosmoremix"
+
+
+; INTERNAL URLS TO FILES
+; these are a number of files that can be downloaded from within FCC
+URL_BOOK              = ""
+URL_DOWN_I_HEAR       = ""
+URL_DOWN_PHOTO        = ""
+URL_DOWN_PRESS        = ""
+URL_DOWN_REM_DIRECT   = ""
+URL_DOWN_REM_MATERIAL = ""
+URL_DOWN_REM_TORRENT  = ""
+URL_DOWN_SOUNDTRACK   = ""
+URL_DOWN_TRANS_SESS   = ""
+URL_THE_PLAN_EN       = ""
+URL_THE_PLAN_ES       = ""
+
+
+; GOO.GL SHORT URLS
+; Short URLs for different shareable content
+URL_SHORT_FU_ES       = ""
+URL_SHORT_FU_EN       = ""
+URL_SHORT_BS_ES       = ""
+URL_SHORT_BS_EN       = ""
+URL_SHORT_WA_ES       = ""
+URL_SHORT_WA_EN       = ""
+
+
+; VIMEO CLIP IDs AND CONSTANTS
+; Vimeo IDs for different videos
+; About us, English language
+VIMEO_ABOUT_ID_EN    = "66033735"
+; About us, Spanish language
+VIMEO_ABOUT_ID_ES    = "66033734"
+; Header loop
+VIMEO_LOOP_ID        = "65893332"
+; Movie trailer, English language
+VIMEO_TRAILER_ID_EN  = "59640383"
+; Movie trailer, Spanish language
+VIMEO_TRAILER_ID_ES  = "59640382"
+; Trailer measurements
+VIMEO_TRAILER_WIDTH  = 1920
+VIMEO_TRAILER_HEIGHT = 804
+
+
+; MERCHANDISE CONSTANTS
+; Price for the merchandising package
+VALUE_MERCHANDISING = 80
+; Price for digital video copy
+VALUE_DCP = 240
+; Price for DVD copy
+VALUE_DVD = 20
+
+
+; CONSTANTS
+PAGE_SIZE = 15
+
+
+; TWITTER CACOUNT CONSTANTS
+; Twitter account for the project, English language
+TWITTER_ACCOUNT_EN = ""
+; Twitter account for the project, Spanish language
+TWITTER_ACCOUNT_ES = ""
+
+
+; GOOGLE API KEYS
+GOO_API_KEY = ""

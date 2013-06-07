@@ -1,0 +1,27 @@
+/**
+ * cosmonautexperience.com
+ *
+ * Website for The Cosmonaut movie.
+ *
+ * NOTE OF LICENSE
+ * Licensed under GNU General Public License version 3.0
+ *
+ * Copyright (c) 2013 Tecnilógica Soluciones Avanzadas.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the GNU Public License v3.0
+ * which accompanies this distribution, and is available at
+ * http://www.gnu.org/licenses/gpl.html
+ *
+ * Contributors:
+ * Tecnilógica Soluciones Avanzadas - initial API and implementation
+ *
+ * @package   cosmonautexperience
+ * @author    Tecnilógica soluciones avanzadas
+ * @copyright Copyright (c) 2003 - 2013, Tecnilógica soluciones avanzadas, S.A. (http://tecnilogica.com/)
+ * @license   http://www.gnu.org/licenses/gpl-3.0.html
+ * @link      http://cosmonautexperience.com
+ * 
+ * 
+ * cosmonaut.map.js
+ */
+cosmonaut.map=new Array;cosmonaut.map.fillProjectionsData=function(e){var t=0;var n=0;var r=[];$.each(e.rows,function(e,i){if(i.type=="_PROJECTION_"){t++;if(i.country!=null&&jQuery.inArray(i.country,r)==-1){r.push(i.country)}}else if(i.type=="_DEMAND_"){n++}});var i=t.toString()+"{{@dict_car_cartodb_1}}"+r.length.toString();if(r.length>1){i+="{{@dict_car_cartodb_2}}"}else{i+="{{@dict_car_cartodb_3}}"}$("#numProjections").html(i)};cosmonaut.map.insertDemand=function(e,t){var n=cosmonaut.data.cartodb.api_key;var r=cosmonaut.data.cartodb.account;var i=cosmonaut.data.cartodb.table;var s="INSERT INTO "+cosmonaut.data.cartodb.table+" (city, zip_code, type) VALUES ('"+e+"', '"+t+"','_DEMAND_')";$.getJSON("http://"+cosmonaut.data.cartodb.account+".cartodb.com/api/v2/sql?q="+s+"&api_key="+n,function(e){});return true};cosmonaut.map.loadProjectionsMap=function(e){var t="http://"+cosmonaut.data.cartodb.account+".cartodb.com/api/v1/viz/"+cosmonaut.data.cartodb.table+"/viz.json";cartodb.createVis(e,t,{cartodb_logo:false,center_lat:20,center_lon:-100,description:false,loaderControl:true,scrollWheelZoom:false,searchControl:false,shareable:false,tiles_loader:false,title:false,zoom:2,zoomControl:true}).done(function(e,t){}).error(function(e){console.log(e)})};cosmonaut.map.loadCustomMap=function(e){var t=L.map(e,{cartodb_logo:false,center:[15,-50],scrollWheelZoom:false,zoom:3,zoomControl:true});L.tileLayer("https://dnv9my2eseobd.cloudfront.net/v3/cartodb.map-4xtxp73f/{z}/{x}/{y}.png",{attribution:"MapBox"}).addTo(t);var n="http://"+cosmonaut.data.cartodb.account+".cartodb.com/api/v1/viz/"+cosmonaut.data.cartodb.table+"/viz.json";cartodb.createLayer(t,n).on("done",function(e){t.addLayer(e);e.infowindow.set("template",$("#infowindow_template").html());e.on("featureClick",function(e,t,n,r){cosmonaut.map.point2info(r.cartodb_id)});e.on("error",function(e){console.log("error: "+e)})}).on("error",function(){console.log("some error occurred")})};cosmonaut.map.modeOff=function(){$(".foot-map").fadeOut(500);$(".map-form").fadeIn(500)};cosmonaut.map.modeOn=function(){$(".foot-map").fadeIn(500);$(".map-form").fadeOut(500)};cosmonaut.map.point2info=function(e){var t=cosmonaut.data.cartodb.account;var n=cosmonaut.data.cartodb.api_key;var r="SELECT * FROM elcosmonauta WHERE cartodb_id='"+e+"'";$.getJSON("http://"+t+".cartodb.com/api/v2/sql/?q="+r,function(e){}).success(function(e){$("#event_content").hide();$("#event_content").html("");var t=e.rows[0];if(t.type=="_DEMAND_"){$("#address_content").show();if(t.city!=null){$("#address_content").html(t.city)}}else if(t.type=="_PROJECTION_"){$("#address_content").show();if(t.descriptor!=null){$("#event_content").show();$("#event_content").html(t.descriptor)}if(t.day!=null){$("#address_content").html(t.day)}if(t.hour!=null){$("#address_content").html($("#address_content").html()+" "+t.hour)}if(t.address!=null){$("#address_content").html($("#address_content").html()+"<br/>"+t.address)}if(t.city!=null){$("#address_content").html($("#address_content").html()+"<br/>"+t.city)}if(t.country!=null){$("#address_content").html($("#address_content").html()+" ("+t.country+")")}if(t.link!=null){var n=$(document.createElement("a")).attr("href",t.link).attr("target","_blank").addClass("blue").html("{{@dict_car_data_tickets}}").appendTo($(".cartodb-popup-content"))}}}).error(function(){}).complete(function(){})};$(":checkbox").change(function(){if(this.checked){$("label[for='"+$(this).attr("name")+"']").css("color","#333")}else{$("label[for='"+$(this).attr("name")+"']").css("color","#666")}});$("#link_explore_map").click(function(e){e.preventDefault();cosmonaut.map.modeOn()});$("#inputExtraProfit").change(function(){if(this.checked){$("#inputExtraAdditional").prop("checked",false);$("#inputExtraSnacks").prop("checked",false);$("#inputExtraParty").prop("checked",false);$("#inputExtraQandA").prop("checked",false);$("#inputExtraMerchandising").prop("checked",false);$("#inputExtraAdditional").attr("disabled",true);$("#inputExtraSnacks").attr("disabled",true);$("#inputExtraParty").attr("disabled",true);$("#inputExtraQandA").attr("disabled",true);$("#inputExtraMerchandising").attr("disabled",true)}else{$("#inputExtraAdditional").removeAttr("disabled");$("#inputExtraSnacks").removeAttr("disabled");$("#inputExtraParty").removeAttr("disabled");$("#inputExtraQandA").removeAttr("disabled");$("#inputExtraMerchandising").removeAttr("disabled")}});$(document).ready(function(){cosmonaut.map.loadCustomMap($("#divCartoDBMap").attr("id"))})

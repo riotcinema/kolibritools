@@ -1,0 +1,145 @@
+<!--
+/**
+ * cosmonautexperience.com
+ *
+ * Website for The Cosmonaut movie.
+ *
+ * NOTE OF LICENSE
+ * Licensed under GNU General Public License version 3.0
+ *
+ * Copyright (c) 2013 Tecnilógica Soluciones Avanzadas.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the GNU Public License v3.0
+ * which accompanies this distribution, and is available at
+ * http://www.gnu.org/licenses/gpl.html
+ *
+ * Contributors:
+ * Tecnilógica Soluciones Avanzadas - initial API and implementation
+ *
+ * @package   cosmonautexperience
+ * @author    Tecnilógica soluciones avanzadas
+ * @copyright Copyright (c) 2003 - 2013, Tecnilógica soluciones avanzadas, S.A. (http://tecnilogica.com/)
+ * @license   http://www.gnu.org/licenses/gpl-3.0.html
+ * @link      http://cosmonautexperience.com
+ *
+ *
+ *
+ * dashboard_template.html
+ *
+-->
+
+<div class="lightbox-login lightbox" id="dialog-operation">
+  <form>
+    <a id="dialog-operation-close" href="" class="cerrar"></a>
+    <h4></h4>
+    <a href="#" title="{{@dict_das_yes_im_sure}}" class="btn small bg-black white" id="link-operate">{{@dict_das_yes_im_sure}}</a>
+  </form>
+</div>
+
+
+<div class="lightbox-login lightbox" id="dialog-confirmation">
+  <form>
+    <a id="dialog-confirmation-close" href="" class="cerrar"></a>
+    <h4></h4>
+    <a href="#" title="{{@dict_das_yes_im_sure}}" class="btn small bg-black white" id="link-operate-accept">{{@dict_com_accept}}</a>
+  </form>
+</div>
+
+<!--Section -->
+<section class="k-pax log">
+
+  <div class="transparencia">
+    <div class="logo wrapper">
+      <div class="">
+          <h3>{{@dict_das_welcome_back}} {{@SESSION.firstname}}</h3>
+          <p>{{@dict_das_its_great_to_have_you}}</p>
+      </div>
+    </div>
+    <div class="border-section"></div>
+  </div>
+
+  <!--contenido -->
+  <div class="gradient-flayer">
+
+    <div class="wrapper">
+      <div class="subwrapper">
+        <section class="exclusive">
+          <h2 class="title">{{@visualization_message}}</h2>
+          <ul class="exclusive-contents">
+            <li>
+              <check if="{{@visualized_transmedia == @num_transmedia}}">
+                <true><span class="badge"></span></true>
+              <false><span class=""></span></false>
+              </check>
+              <span>{{@visualized_transmedia}}<span>/{{@num_transmedia}}</span></span>
+              <span class="text">{{@dict_com_transmedia_episodes}}</span>
+            </li>
+            <li>
+              <check if="{{@visualized_easterns == @num_easterns}}">
+              <true><span class="badge"></span></true>
+              <false><span class=""></span></false>
+              </check>
+              <span>{{@visualized_easterns}}<span>/{{@num_easterns}}</span></span>
+              <span class="text">{{@dict_com_eastern_eggs}}</span>
+            </li>
+            <li>
+              <span class="badge"></span>
+              <span class="text middle grey">{{@dict_com_secret_newsletter}}</span>
+            </li>
+            <li class="middle">
+              <span class="badge"></span>
+              <check if="{{SessionManager::is_logged() && !empty(@URL_BOOK)}}">
+                <true><a href="{{@URL_BOOK}}" target="_blank"><span class="text middle grey">{{@dict_com_cosmonaut_book}}</span></a></true>
+                <false><span class="text middle grey">{{@dict_com_cosmonaut_book}}</span></false>
+              </check>
+            </li>
+          </ul>
+          <div class="clearfix"></div>
+        </section>
+      </div>
+    </div>
+
+    <!-- formulario -->
+    <section class="form">
+      <div class="wrapper">
+        <div class="subwrapper">
+          <section class="exclusive">
+            <form id="frm-update-user">
+              <input type="hidden" id="use_id" value="{{@POST.id_customer}}">
+              <h2 class="title">{{@dict_das_your_account}}</h2>
+              <ul class="info">
+                <li>
+                  <label for="input-firstname">{{@dict_das_your_name}}</label>
+                  <input type="text" id="input-firstname" value="{{@POST.firstname}}" />
+                </li>
+                <li>
+                  <label for="input-lastname">{{@dict_das_your_surname}}</label>
+                  <input type="text" id="input-lastname" value="{{@POST.lastname}}" />
+                </li>
+                <li>
+                  <label for="input-id">{{@dict_das_your_code}}</label>
+                  <input type="text" id="input-id-readonly" class="code" value="{{@POST.note}}" readonly/>
+                  <input type="hidden" id="input-id" class="code" value="{{@POST.id_customer}}"/>
+                </li>
+                <li>
+                  <label for="input-email">{{@dict_das_your_email}}</label>
+                  <input type="text" id="input-email" value="{{@POST.email}}" />
+                </li>
+                <li>
+                  <label for="input-form3"></label>
+                  <a href="#" class="btn small bg-blue white" id="link-update">{{@dict_das_save_changes}}</a>
+                  <a href="#" class="link" id="link-delete">{{@dict_das_delete_account}}</a>
+                </li>
+              </ul>
+            </form>
+            <div class="foot-button">
+              <label for=""></label>
+            </div>
+          </section>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+</section>

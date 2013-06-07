@@ -1,0 +1,127 @@
+<!--
+/**
+ * cosmonautexperience.com
+ *
+ * Website for The Cosmonaut movie.
+ *
+ * NOTE OF LICENSE
+ * Licensed under GNU General Public License version 3.0
+ *
+ * Copyright (c) 2013 Tecnilógica Soluciones Avanzadas.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the GNU Public License v3.0
+ * which accompanies this distribution, and is available at
+ * http://www.gnu.org/licenses/gpl.html
+ *
+ * Contributors:
+ * Tecnilógica Soluciones Avanzadas - initial API and implementation
+ *
+ * @package   cosmonautexperience
+ * @author    Tecnilógica soluciones avanzadas
+ * @copyright Copyright (c) 2003 - 2013, Tecnilógica soluciones avanzadas, S.A. (http://tecnilogica.com/)
+ * @license   http://www.gnu.org/licenses/gpl-3.0.html
+ * @link      http://cosmonautexperience.com
+ *
+ *
+ *
+ * nayik_response_add.html
+ *
+ * Template to add a response in a Nayik comment.
+-->
+
+<ul class="breadcrumb">
+  <li><a href="{{@BASE_URL}}/admin/">Home</a> <span class="divider">&gt;</span></li>
+  <li><a href="{{@BASE_URL}}/admin/nayik/list">Nayik</a> <span class="divider">&gt;</span></li>
+  <li><a href="{{@BASE_URL}}/admin/nayik/{{@post->nay_id}}/response/add">{{@post->nay_id}}</a> <span class="divider">&gt;</span></li>
+  <li class="active">Añadir / Editar</li>
+</ul>
+
+<include href="error_template.html"/>
+
+<form method="post" action="{{@BASE_URL}}/admin/nayik/{{@PARAMS.nay_id}}/response/update" id="f_edit" class="form-horizontal">
+
+  <fieldset>
+
+    <div class="control-group">
+      <label class="control-label">Post original</label>
+      <div class="controls"><hr/></div>
+    </div>
+
+    <div class="control-group">
+      <label for="nay_post_fullname" class="control-label">Autor original</label>
+      <div class="controls">
+        <input type="text" value="{{isset(@character['cha_fullname']) ? @character['cha_fullname'] : NULL}}" name="nay_post_fullname" id="nay_post_fullname" readonly />
+      </div>
+    </div>
+
+    <div class="control-group">
+      <label for="nay_post_date" class="control-label">Publicación original</label>
+      <div class="controls">
+        <input type="text" value="{{isset(@post->nay_date) ? @post->nay_date : NULL}}" name="nay_post_date" id="nay_post_date" readonly />
+      </div>
+    </div>
+
+    <div class="control-group">
+      <label for="nay_post_comment" class="control-label">Post original</label>
+      <div class="controls">
+        <textarea type="text" name="nay_post_comment" id="nay_post_comment" readonly>{{isset(@post->nay_comment) ? @post->nay_comment : NULL}}</textarea>
+      </div>
+    </div>
+
+    <div class="control-group">
+      <label class="control-label">Respuesta</label>
+      <div class="controls"><hr/></div>
+    </div>
+
+    <input type="hidden" value="{{isset(@POST.nay_id) ? @POST.nay_id : NULL}}" name="nay_id"/>
+    <input type="hidden" value="{{isset(@PARAMS.nay_id) ? @PARAMS.nay_id : NULL}}" name="nay_parent_id"/>
+
+    <div class="control-group">
+      <label for="nay_fk_cha_id" class="control-label">Autor respuesta</label>
+      <div class="controls">
+        <select name="nay_fk_cha_id" id="nay_fk_cha_id" class="input-xlarge">
+          <repeat group="{{@characters}}" key="{{@c_key}}" value="{{@character}}">
+            <option value="{{@character['cha_id']}}" <check if="{{isset(@POST.nay_fk_cha_id) && @POST.nay_fk_cha_id==@character['cha_id']}}">selected</check>>{{@character['cha_fullname']}}</option>
+          </repeat>
+        </select>
+      </div>
+    </div>
+
+    <div class="control-group">
+      <label for="nay_date" class="control-label">Publicación respuesta</label>
+      <div class="controls">
+        <input type="text" value="{{isset(@POST.nay_date) ? @POST.nay_date : NULL}}" name="nay_date" id="nay_date" />
+      </div>
+    </div>
+
+    <div class="control-group">
+      <label for="nay_comment" class="control-label">Respuesta</label>
+      <div class="controls">
+        <textarea type="textarea" name="nay_comment" class="input-xlarge" id="nay_comment"/>{{isset(@POST.nay_comment) ? @POST.nay_comment : NULL}}</textarea>
+      </div>
+    </div>
+
+  </fieldset>
+
+  <div class="form-actions">
+    <a class="btn" href="{{@BASE_URL}}/admin/nayik/list">Cancelar</a>
+    <button class="btn btn-primary" type="submit" id="submit">Modificar</button>
+  </div>
+
+</form>
+
+<script type="text/javascript">
+  $(document).ready(function() {
+    $.each($("textarea"), function(index, item) {
+      $(item).css("width", "500px");
+      $(item).attr("rows", "5");
+    });
+  });
+
+  $('#nay_date').datetimepicker({
+    dateFormat: "yy/mm/dd",
+    hourGrid: 2,
+    minuteGrid: 10,
+    timeFormat: "HH:mm:ss"
+  });
+</script>

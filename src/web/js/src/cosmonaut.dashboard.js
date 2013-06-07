@@ -1,0 +1,27 @@
+/**
+ * cosmonautexperience.com
+ *
+ * Website for The Cosmonaut movie.
+ *
+ * NOTE OF LICENSE
+ * Licensed under GNU General Public License version 3.0
+ *
+ * Copyright (c) 2013 Tecnilógica Soluciones Avanzadas.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the GNU Public License v3.0
+ * which accompanies this distribution, and is available at
+ * http://www.gnu.org/licenses/gpl.html
+ *
+ * Contributors:
+ * Tecnilógica Soluciones Avanzadas - initial API and implementation
+ *
+ * @package   cosmonautexperience
+ * @author    Tecnilógica soluciones avanzadas
+ * @copyright Copyright (c) 2003 - 2013, Tecnilógica soluciones avanzadas, S.A. (http://tecnilogica.com/)
+ * @license   http://www.gnu.org/licenses/gpl-3.0.html
+ * @link      http://cosmonautexperience.com
+ * 
+ * 
+ * cosmonaut.dashboard.js
+ */
+cosmonaut.dashboard=new Array;cosmonaut.dashboard.closeConfirmation=function(){console.log("cosmonaut.dashboard.closeConfirmation");$("#dialog-confirmation h4").html("");$("#dialog-confirmation").dialog("close");$("#link-operate-accept").unbind("click")};cosmonaut.dashboard.closeOperation=function(){console.log("cosmonaut.dashboard.closeOperation");$("#dialog-operation h4").html("");$("#dialog-operation").dialog("close");$("#link-operate").unbind("click")};cosmonaut.dashboard.openConfirmation=function(){console.log("cosmonaut.dashboard.openConfirmation");$("#dialog-confirmation").dialog("open");$("#link-operate-accept").bind("click",function(){cosmonaut.dashboard.closeConfirmation()})};cosmonaut.dashboard.openDeleteOperation=function(){$("#dialog-operation").dialog("open");var e="{{ mb_convert_case(html_entity_decode(@dict_das_this_will_completely, ENT_NOQUOTES, @ENCODING), MB_CASE_UPPER, @ENCODING) }}";e+="<br/>";e+="{{ mb_convert_case(html_entity_decode(@dict_das_are_you_sure, ENT_NOQUOTES, @ENCODING), MB_CASE_UPPER, @ENCODING) }}";$("#dialog-operation h4").html(e);$("#link-operate").bind("click",function(){cosmonaut.dashboard.deleteUser()})};cosmonaut.dashboard.openUpdateOperation=function(){$("#dialog-operation").dialog("open");var e="{{ mb_convert_case(html_entity_decode(@dict_das_this_will_update, ENT_NOQUOTES, @ENCODING), MB_CASE_UPPER, @ENCODING) }}";e+="<br/>";e+="{{ mb_convert_case(html_entity_decode(@dict_das_are_you_sure, ENT_NOQUOTES, @ENCODING), MB_CASE_UPPER, @ENCODING) }}";$("#dialog-operation h4").html(e);$("#link-operate").bind("click",function(){cosmonaut.dashboard.updateUser()})};cosmonaut.dashboard.deleteUser=function(){$.ajax({url:"/user/delete",cache:false,type:"POST",dataType:"json",data:{},beforeSend:function(){},complete:function(e){},success:function(e){cosmonaut.dashboard.closeOperation();cosmonaut.dashboard.openConfirmation();if(e.result=="ok"){$("#dialog-confirmation h4").html("{{@dict_das_deleted_account}}")}else{$("#dialog-confirmation h4").html("{{@dict_das_deleted_account_error}}")}}})};cosmonaut.dashboard.updateUser=function(){$.ajax({url:"/user/update",cache:false,type:"POST",dataType:"json",data:{use_id:$("#input-id").val(),use_firstname:$("#input-firstname").val(),use_lastname:$("#input-lastname").val(),use_email:$("#input-email").val()},beforeSend:function(){},complete:function(e){},success:function(e){cosmonaut.dashboard.closeOperation();cosmonaut.dashboard.openConfirmation();if(e.result=="ok"){$("#dialog-confirmation h4").html("{{@dict_das_updated_account}}")}else{$("#dialog-confirmation h4").html("{{@dict_das_updated_account_error}}")}}})};cosmonaut.dashboard.validateUpdateUserForm=function(){$.validity.setup({scrollTo:true});$.validity.start();$("#input-firstname").require("{{ @dict_das_err_required_firstname }}");$("#input-lastname").require("{{ @dict_das_err_required_lastname }}");$("#input-email").require("{{ @dict_das_err_required_email }}").match("email","{{@dict_das_err_format_email}}");var e=$.validity.end();return e.valid};$(document).ready(function(){$("#dialog-confirmation .cerrar").css("right","0px");$("#dialog-operation .cerrar").css("right","0px");$(".ui-dialog-titlebar-close").css("display","none");cosmonaut.loadRecentPosts()});$("#dialog-confirmation").dialog({autoOpen:false,option:"closeOnEscape",dialogClass:"no-close",hide:"fadeOut",modal:true,show:"fade",width:"455px",close:function(){cosmonaut.dashboard.closeConfirmation()},open:function(){$(".ui-dialog").css("z-index",10)}});$("#dialog-operation").dialog({autoOpen:false,option:"closeOnEscape",dialogClass:"no-close",hide:"fadeOut",modal:true,show:"fade",title:null,width:"455px",close:function(){cosmonaut.dashboard.closeOperation()},open:function(){$(".ui-dialog").css("z-index",10)}});$("#dialog-operation-close").click(function(e){e.preventDefault();cosmonaut.dashboard.closeOperation()});$("#dialog-confirmation-close").click(function(e){e.preventDefault();cosmonaut.dashboard.closeConfirmation()});$("#link-delete").click(function(e){e.preventDefault();cosmonaut.dashboard.openDeleteOperation()});$("#link-operate-accept").click(function(e){e.preventDefault();cosmonaut.dashboard.closeConfirmation()});$("#link-update").click(function(e){e.preventDefault();var t=cosmonaut.dashboard.validateUpdateUserForm();if(t){cosmonaut.dashboard.openUpdateOperation()}else{$(".validity-tooltip").each(function(e,t){$(t).offset({top:$(t).position().top-50,left:$(t).position().left-400})})}})

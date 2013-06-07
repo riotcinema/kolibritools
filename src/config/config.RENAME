@@ -1,0 +1,84 @@
+; cosmonautexperience.com
+;
+; Website for The Cosmonaut movie.
+;
+; NOTE OF LICENSE
+; Licensed under GNU General Public License version 3.0
+;
+; Copyright (c) 2013 Tecnilógica Soluciones Avanzadas.
+; All rights reserved. This program and the accompanying materials
+; are made available under the terms of the GNU Public License v3.0
+; which accompanies this distribution, and is available at
+; http://www.gnu.org/licenses/gpl.html
+;
+; Contributors:
+; Tecnilógica Soluciones Avanzadas - initial API and implementation
+;
+; @package   cosmonautexperience
+; @author    Tecnilógica soluciones avanzadas
+; @copyright Copyright (c) 2003 - 2013, Tecnilógica soluciones avanzadas, S.A. (http://tecnilogica.com/)
+; @license   http://www.gnu.org/licenses/gpl-3.0.html
+; @link      http://cosmonautexperience.com
+;
+; config in development mode
+;
+; This is a sample configuration file. Empty values should be filled and file
+; should be renamed to config.cfg
+
+[globals]
+
+; PATHS
+; This URL redirects by language
+BASE_URL_NEUTRAL = ""
+; English language TKT URL
+BASE_URL_EN      = ""
+; Spanish language TKT URL
+BASE_URL_ES      = ""
+_PATH            = "web/"
+PATH_DICT        = "dict/"
+PATH_FILES	     = "files/"
+PATH_LOGS        = "/logs/"
+URL_SHOP_EN      = ""
+URL_SHOP_ES      = ""
+
+
+; WEB APP DATABASE
+DB_STRING = ""
+DB_USER   = ""
+DB_PASS   = ""
+
+
+; PRESTASHOP AND USERS DATABASE
+DB_SHOP_STRING     = ""
+DB_SHOP_USER       = ""
+DB_SHOP_PASS       = ""
+DB_SHOP_KPASS_ID   = 8
+DB_SHOP_BACKERS_ID = 4
+DB_SHOP_COOKIE     = ""
+URL_K_PASS_EN      = ""
+URL_K_PASS_ES      = ""
+
+
+; CARTODB ACCOUNT AND KEY
+CARTODB_ACCOUNT = ""
+CARTODB_API_KEY = ""
+CARTODB_TABLE   = ""
+
+
+; DEBUG OPTIONS AND ENVIRONMENT
+DEBUGLevel  = 3
+ENVIRONMENT = "DEVELOPMENT"
+
+
+; THE COSMONAUT FACEBOOK APP
+FB_APP_ID        = ""
+FB_APP_SECRET    = ""
+
+
+; CONTACT MAIL
+MAIL_CONTACT   = ""
+
+
+; PAYPAL CONSTANTS
+PAYPAL_EMAIL  = ""
+PAYPAL_URL    = "https://www.paypal.com/cgi-bin/webscr";
