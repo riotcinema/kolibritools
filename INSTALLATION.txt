@@ -1,0 +1,158 @@
+INSTALLATION
+Install Prestashop and point a vhost to it.
+Deploy TKT to a directory and point another vhost to it.
+Create a database and database user for TKT and load wadus.sql onto the newly created database.
+
+Edit config.cfg and fill the following parameters
+
+BASE_URL_NEUTRAL = "thecosmonaut.localhost" # This URL redirects by language
+BASE_URL_EN      = "http://thecosmonautsite.localhost" # English language TKT URL
+BASE_URL_ES      = "http://elcosmonautasite.localhost" # Spanish language TKT URL
+URL_SHOP_EN      = "http://thecosmonautshop.localhost" # English prestashop URL
+URL_SHOP_ES      = "http://elcosmonautashop.localhost" # Spanish prestashop URL
+
+
+; WEB APP DATABASE
+DB_STRING = "mysql:host=10.0.0.6;port=3306;dbname=cosmonauta_pre" # set dbname and host to your values for TKT database
+DB_USER   = "" # TKT's database user
+DB_PASS   = "" # TKT's database user's password
+
+
+; PRESTAHOP AND USERS DATABASE
+DB_SHOP_STRING     = "mysql:host=10.0.0.6;port=3306;dbname=cosmonauta_shop-pre" # set dbname and host to your values for Prestashop's database
+DB_SHOP_USER       = "" # Prestashop's database user
+DB_SHOP_PASS       = "" # Prestashop's database user's password
+DB_SHOP_KPASS_ID   = 8 # Set this to KPass's product ID in Prestashop
+DB_SHOP_BACKERS_ID = 4 # Set this to Backers' group ID in Prestashop
+DB_SHOP_COOKIE     = "" # Set this to Prestashop's Cookie 
+URL_K_PASS_EN      = "http://thecosmonautshop.localhost/index.php?id_product=8&controller=product&id_lang=4" Set this to Kpass's URL English language
+URL_K_PASS_ES      = "http://elcosmonautashop.localhost/index.php?id_product=8&controller=product&id_lang=1" Set this to Kpass's URL Spanish language
+
+
+; CARTODB ACCOUNT AND KEY
+CARTODB_ACCOUNT = "" # Your cartodb account
+CARTODB_API_KEY = "" # Your cartodb API Key
+CARTODB_TABLE   = "" # Cartodb's table 
+
+
+; DEBUG OPTIONS AND ENVIRONMENT
+DEBUGLevel  = 3 # Set to "1" in production
+ENVIRONMENT = "DEVELOPMENT" # Set to "PRODUCTION" in production
+
+
+; THE COSMONAUT FACEBOOK APP
+FB_APP_ID        = "" # Facebook's App ID 
+FB_APP_SECRET    = "" # Facebook's App Secret
+
+
+; CONTACT MAIL
+MAIL_CONTACT   = "" # Email address that will be seen around the site
+
+
+; PAYPAL CONSTANTS
+PAYPAL_EMAIL  = "" # Your paypal address
+
+
+Edit constants.cfg and fill the following parameters:
+[globals]
+
+; LANGUAGES
+DEFAULT_LANG   = "EN" # ISO code for default language
+AVAILABLE_LANG = "EN","ES" # ISO codes for available languages
+
+
+; MAILS
+MAIL_NO_REPLY         = "no-reply@elcosmonauta.es" # No-reply email for mailings.
+MAIL_DEMAND_SUBJECT   = "[ The Cosmonaut] Formulario web :: Solicitar evento" # Email subject for the event solicitation form 
+MAIL_ORGANIZE_SUBJECT = "[ The Cosmonaut] Formulario web :: Organizar evento" # Email subject for the event organization form 
+
+
+; EXTERNAL URLs
+; these are a number of URLs that appear throught the site, change them to suit your needs
+
+URL_BLOG_EN           = "http://www.thecosmonaut.org/blog/"
+URL_BLOG_ES           = "http://www.elcosmonauta.es/blog/"
+URL_BLOG_THANKS_EN    = "http://www.thecosmonaut.org/blog/?p=713"
+URL_BLOG_THANKS_ES    = "http://www.elcosmonauta.es/blog/?p=1174"
+URL_CC_EN             = "http://creativecommons.org/licenses/by-nc-sa/3.0/"
+URL_CC_ES             = "http://creativecommons.org/licenses/by-nc-sa/3.0/es/"
+URL_FACEBOOK_EN       = "https://www.facebook.com/cosmonaut.movie"
+URL_FACEBOOK_ES       = "https://www.facebook.com/cosmonauta.pelicula"
+URL_FLICKR_RIOT       = "http://flickr.com/riotcinema/sets"
+URL_GUIDE_EN          = "http://www.riotcinema.com/screening_guide_eng.pdf"
+URL_GUIDE_ES          = "http://www.riotcinema.com/screening_guide_esp.pdf"
+URL_OLDSITE_EN        = "http://classic.thecosmonaut.org"
+URL_OLDSITE_ES        = "http://classic.elcosmonauta.es"
+URL_PANORAMA_EN       = "http://classic.thecosmonaut.org/#dossier"
+URL_PANORAMA_ES       = "http://classic.elcosmonauta.es/#dossier"
+URL_RSS_EN            = "http://www.thecosmonaut.org/blog/?feed=rss2"
+URL_RSS_ES            = "http://www.elcosmonauta.es/blog/?feed=rss2"
+URL_SCRIPTS_EN        = "http://classic.thecosmonaut.org/#guiones"
+URL_SCRIPTS_ES        = "http://classic.elcosmonauta.es/#guiones"
+URL_TRAILER_EN        = "http://trailer.thecosmonaut.org"
+URL_TRAILER_ES        = "http://trailer.elcosmonauta.es"
+URL_TWITTER_EN        = "https://twitter.com/cosmonaut_movie"
+URL_TWITTER_ES        = "https://twitter.com/el_cosmonauta"
+URL_VIMEO_RIOT        = "http://vimeo.com/riotcinema"
+URL_VIMEO_SUBMISSIONS = "http://vimeo.com/groups/cosmoremix"
+URL_VIMEO_SUBMIT      = "http://vimeo.com/groups/cosmoremix"
+
+
+; INTERNAL URLS TO FILES
+; these are a number of files that can be downloaded from within FCC
+
+URL_BOOK              = ""
+URL_DOWN_I_HEAR       = "I_hear_voices_from_space.zip"
+URL_DOWN_PHOTO        = "frames-low-res.zip"
+URL_DOWN_PRESS        = "full-presskit.zip"
+URL_DOWN_REM_DIRECT   = ""
+URL_DOWN_REM_MATERIAL = ""
+URL_DOWN_REM_TORRENT  = "TheCosmonaut.torrent"
+URL_DOWN_REM_WEB      = ""
+URL_DOWN_SOUNDTRACK   = ""
+URL_DOWN_TRANS_SESS   = ""
+URL_THE_PLAN_EN       = "theplan3_eng.pdf"
+URL_THE_PLAN_ES       = "theplan3_esp.pdf"
+
+
+; GOO.GL SHORT URLS
+; Short URLs for different shareable content
+URL_SHORT_FU_ES       = "http://goo.gl/jVGIy"
+URL_SHORT_FU_EN       = "http://goo.gl/W6rbP"
+URL_SHORT_BS_ES       = "http://goo.gl/f0jtA"
+URL_SHORT_BS_EN       = "http://goo.gl/EoMSm"
+URL_SHORT_WA_ES       = "http://goo.gl/rcygM"
+URL_SHORT_WA_EN       = "http://goo.gl/bWl0J"
+
+
+; VIMEO CLIP IDs AND CONSTANTS
+; Vimeo IDs for different videos
+
+VIMEO_ABOUT_ID_EN    = "66033735" # About us, English language
+VIMEO_ABOUT_ID_ES    = "66033734" # About us, Spanish language
+VIMEO_LOOP_ID        = "65893332" # Header loop
+VIMEO_TRAILER_ID_EN  = "59640383" # Movie trailer, English language
+VIMEO_TRAILER_ID_ES  = "59640382" # Movie trailer, Spanish language
+VIMEO_TRAILER_WIDTH  = 1920 # Trailer measurements
+VIMEO_TRAILER_HEIGHT = 804 # Trailer measurements
+
+
+; MERCHANDISE CONSTANTS
+VALUE_MERCHANDISING = 80 # Price for the merchandising package
+VALUE_DCP = 240 # Price for digital video copy
+VALUE_DVD = 20 # Price for DVD copy
+
+
+; TWITTER CACOUNT CONSTANTS
+TWITTER_ACCOUNT_EN       = "cosmonaut_movie" # Twitter account for the project, English language
+TWITTER_ACCOUNT_ES       = "el_cosmonauta" # Twitter account for the project, Spanish language
+TWITTER_VIDEO_HASHTAG_EN = "ElCosmonauta"  # Twitter hashtag, Spanish language
+TWITTER_VIDEO_HASHTAG_ES = "TheCosmonaut" # Twitter hashtag, English language
+TWITTER_VIDEO_TEXT_EN    = "I'm watching " # Tweet text, English language
+TWITTER_VIDEO_TEXT_ES    = "Estoy viendo" # Tweet text, Spanish language
+
+
+; GOOGLE API KEYS
+GOO_API_KEY = "" # google API Key, for URL shortening
+
+
